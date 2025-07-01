@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/extensions/context_extension.dart';
+import 'package:graduation/core/language/lang_keys.dart';
+import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/features/onboarding/onboard_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -18,10 +21,7 @@ class _SplashViewState extends State<SplashView> {
 
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const OnBoardingScreen()),
-      );
+      context.pushNamedAndRemoveUntil(AppRoutes.onBoarding);
     });
   }
 
@@ -31,24 +31,20 @@ class _SplashViewState extends State<SplashView> {
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.0.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                AppImages.logo,
-                height: 200,
-                width: 200,
-              ),
-              const SizedBox(height: 24),
+              Image.asset(AppImages.logo, height: 200.h, width: 200.w),
+              SizedBox(height: 24.h),
               TextApp(
-                text: 'ExamZone',
+                text: context.translate(LangKeys.appName),
                 style: AppTextStyles.bold32(context),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               TextApp(
-                text: 'Create Smarter. Faster. Easier.',
+                text: context.translate(LangKeys.splashBody),
                 style: AppTextStyles.body16(context),
                 textAlign: TextAlign.center,
               ),

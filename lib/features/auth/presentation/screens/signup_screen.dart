@@ -4,6 +4,8 @@ import 'package:graduation/core/common/animations/animate_do.dart';
 import 'package:graduation/core/common/widgets/app_text_field.dart';
 import 'package:graduation/core/common/widgets/custom_app_bar.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/extensions/context_extension.dart';
+import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/features/auth/presentation/widgets/auth_button.dart';
@@ -22,33 +24,33 @@ class SignupScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             60.h.verticalSpace,
-            CustomAppBar(text: 'ExamGenius'),
+            CustomAppBar(text: context.translate(LangKeys.appName)),
             40.h.verticalSpace,
             CustomFadeInLeft(
               duration: 700,
-              child: TextApp(text: 'Welcome 🤩', style: AppTextStyles.bold24(context)),
+              child: TextApp(text:  context.translate(LangKeys.welcome), style: AppTextStyles.bold24(context)),
             ),
             30.h.verticalSpace,
             CustomFadeInRight(
               duration: 700,
-              child: AppTextField(labelText: 'Email'),
+              child: AppTextField(labelText: context.translate(LangKeys.email)),
             ),
             16.h.verticalSpace,
             CustomFadeInLeft(
               duration: 700,
-              child: AppTextField(labelText: 'Password'),
+              child: AppTextField(labelText:context.translate(LangKeys.password),),
             ),
             20.h.verticalSpace,
             CustomFadeInUp(
               duration: 700,
-              child: AuthButton(text: 'Sign up', routeName: AppRoutes.home),
+              child: AuthButton(text:  context.translate(LangKeys.signUp), routeName: AppRoutes.home),
             ),
             20.h.verticalSpace,
             CustomFadeInUp(
               duration: 700,
               child: Center(
                 child: Text(
-                  'Or continue with',
+                    context.translate(LangKeys.orContinueWith),
                   style: TextStyle(color: Colors.white70, fontSize: 14.sp),
                 ),
               ),
@@ -62,7 +64,7 @@ class SignupScreen extends StatelessWidget {
             CustomFadeInUp(
               duration: 800,
               child: HaveAuth(
-                text: 'already have an account? login',
+                text: context.translate(LangKeys.alreadyHaveAccount),
                 onPressed: () => Navigator.pop(context),
               ),
             ),

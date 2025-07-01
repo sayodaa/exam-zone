@@ -1,4 +1,8 @@
 abstract class AppImages {
+  //Onboarding images
+  static const onBoard1Dark = 'assets/images/on_board/on_board_1.png';
+  static const onBoard2Dark = 'assets/images/on_board/on_board_2.png';
+  static const onBoard3Dark = 'assets/images/on_board/on_board_3.png';
   // Core images
   static const String logo = 'assets/images/core/splash.png';
   static const String examZone = 'assets/images/core/exam_zone.png';
@@ -12,5 +16,4 @@ abstract class AppImages {
   // SVGs
   static const String splash = 'assets/svgs/splash.svg';
   static const String error = 'assets/svgs/error.svg';
-
 }
