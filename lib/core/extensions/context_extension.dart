@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/core/language/app_localizations.dart';
 
 extension ContextExt on BuildContext {
   // TODO:add in future
@@ -12,9 +13,9 @@ extension ContextExt on BuildContext {
   // TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
 
   // //Language
-  // String translate(String langkey) {
-  //   return AppLocalizations.of(this)!.translate(langkey).toString();
-  // }
+  String translate(String langkey) {
+    return AppLocalizations.of(this)!.translate(langkey).toString();
+  }
 
   //Navigation
 
