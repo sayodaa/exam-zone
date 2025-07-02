@@ -47,9 +47,9 @@ class SignupScreen extends StatelessWidget {
             CustomFadeInUp(
               duration: 700,
               child: Center(
-                child: Text(
-                  'Or continue with',
-                  style: TextStyle(color: Colors.white70, fontSize: 14.sp),
+                child: TextApp(
+                  text: 'Or continue with',
+                  style: AppTextStyles.body16(context),
                 ),
               ),
             ),

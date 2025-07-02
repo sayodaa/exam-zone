@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
+import 'package:graduation/core/styles/theme/app_themes_styles.dart';
 import 'package:graduation/core/styles/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Theme.of(context).appBarTheme.foregroundColor),
+          icon: Icon(Icons.arrow_back, color: AppThemes.darkTheme.bottomAppBarTheme.color),
           onPressed: () => Navigator.pop(context),
         ),
         title: TextApp(

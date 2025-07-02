@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/core/styles/theme/app_themes_styles.dart';
 
 abstract class AppTextStyles {
   // Headings
@@ -92,7 +93,7 @@ abstract class AppTextStyles {
         fontSize: 12.sp,
         fontWeight: FontWeight.normal,
         color: isSuccess
-            ? Theme.of(context).colorScheme.primary
+            ? AppThemes.darkTheme.primaryColor
             : Theme.of(context).colorScheme.error,
       );
 
