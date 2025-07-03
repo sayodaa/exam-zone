@@ -47,45 +47,49 @@ class LangKeys {
   static const String numberOfQuestions =
       'number_of_questions'; // Generate Exam
   static const String difficultyLevel = 'difficulty_level'; // Generate Exam
+  static const String easy = 'easy'; // Generate Exam
   static const String medium = 'medium'; // Generate Exam
+  static const String hard = 'hard'; // Generate Exam
   static const String generate = 'generate'; // Generate Exam
   static const String generatingExam = 'generating_exam'; // Generate Exam
   static const String mayTakeSeconds = 'may_take_seconds'; // Generate Exam
 
   // Exam Results related keys
-  static const String examResults = 'exam_results'; // Exam Results
+  static const String examResults = 'exam results'; // Exam Results
   static const String students = 'students'; // Exam Results
   static const String score = 'score'; // Exam Results
   static const String grade = 'grade'; // Exam Results
   static const String overallPerformance =
       'overall_performance'; // Exam Results
-  static const String correctAnswers = 'correct_answers'; // Exam Results
-  static const String totalScore = 'total_score'; // Exam Results
-  static const String incorrectAnswers = 'incorrect_answers'; // Exam Results
-  static const String performanceByType = 'performance_by_type'; // Exam Results
+  static const String correctAnswers = 'correct answers'; // Exam Results
+  static const String totalScore = 'total score'; // Exam Results
+  static const String incorrectAnswers = 'incorrect answers'; // Exam Results
+  static const String performanceByType = 'performance by type'; // Exam Results
   static const String essay = 'essay'; // Exam Results
-  static const String multipleChoice = 'multiple_choice'; // Exam Results
-  static const String detailedAnswers = 'detailed_answers'; // Exam Results
-  static const String correctYourAnswer = 'correct_your_answer'; // Exam Results
+  static const String multipleChoice = 'multiple choice'; // Exam Results
+  static const String detailedAnswers = 'detailed answers'; // Exam Results
+  static const String correctYourAnswer = 'correct your answer'; // Exam Results
   static const String question = 'question'; // Exam Results
 
   // Add Questions related keys
-  static const String addQuestions = 'add_questions'; // Add Questions
-  static const String option1 = 'option_1'; // Add Questions
-  static const String option2 = 'option_2'; // Add Questions
-  static const String option3 = 'option_3'; // Add Questions
-  static const String option4 = 'option_4'; // Add Questions
-  static const String addQuestion = 'add_question'; // Add Questions
+  static const String addQuestions = 'add questions'; // Add Questions
+  static const String option1 = 'option 1'; // Add Questions
+  static const String option2 = 'option 2'; // Add Questions
+  static const String option3 = 'option 3'; // Add Questions
+  static const String option4 = 'option 4'; // Add Questions
+  static const String addQuestion = 'add question'; // Add Questions
   static const String save = 'save'; // Add Questions
 
   // Create Exam related keys
-  static const String createExam = 'create_exam'; // Create Exam
-  static const String examTitle = 'exam_title'; // Create Exam
-  static const String enterExamTitle = 'enter_exam_title'; // Create Exam
+  static const String createExam = 'create exam'; // Create Exam
+  static const String createAIExam = 'create ai exam';
+  static const String createManualExam = 'create manual exam';
+  static const String examTitle = 'exam title'; // Create Exam
+  static const String enterExamTitle = 'enter exam title'; // Create Exam
   static const String level = 'level'; // Create Exam
-  static const String selectLevel = 'select_level'; // Create Exam
-  static const String durationMinutes = 'duration_minutes'; // Create Exam
-  static const String enterDuration = 'enter_duration'; // Create Exam
+  static const String selectLevel = 'select level'; // Create Exam
+  static const String durationMinutes = 'duration minutes'; // Create Exam
+  static const String enterDuration = 'enter duration'; // Create Exam
 
   // Create Exam related Language Keys
   static const String create = 'create'; // Create Exam
@@ -95,4 +99,12 @@ class LangKeys {
   static const String arabic = 'arabic'; // Create Exam
   static const String english = 'english'; // Create Exam
   static const String languageCreate = 'languageCreate';
+  static const String createAIExamSubtitle = 'Generate an exam using AI based on your specifications.';
+  static const String createManualExamSubtitle = 'Build your exam from scratch with custom questions.';
+  static const String myExamsSubtitle = 'Access and manage all your created exams.';
+  static const String analyticsSubtitle = 'View and analyze your exam performance.';
+  // Create analytics related Language Keys
+  static const String analytics = 'analytics'; // Create Analytics
+  static const String viewAnalytics = 'view analytics'; // Create Analytics
+  static const String exportAnalytics = 'export analytics'; // Create Analytics
 }

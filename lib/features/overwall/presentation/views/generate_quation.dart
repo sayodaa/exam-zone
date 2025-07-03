@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/extensions/context_extension.dart';
+import 'package:graduation/core/language/app_localizations.dart';
+import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
@@ -20,10 +23,10 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
   final _questionsController = TextEditingController();
   bool _isGenerating = false;
 
-  String get difficultyLabel {
-    if (difficultyValue < 0.34) return "Easy";
-    if (difficultyValue < 0.67) return "Medium";
-    return "Hard";
+  String? get difficultyLabel {
+    if (difficultyValue < 0.34) return AppLocalizations.of(context)?.translate(LangKeys.easy);
+    if (difficultyValue < 0.67) return AppLocalizations.of(context)?.translate(LangKeys.medium);
+    return AppLocalizations.of(context)?.translate(LangKeys.hard);
   }
 
   void _startGenerating() async {
@@ -41,12 +44,9 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
         });
       }
 
-      // Navigate to OverwallScreen after generation
+      // Navigate to AddQuestion screen after generation
       if (mounted) {
-        Navigator.pushNamed(
-          context,
-          AppRoutes.addQuestion,
-        );
+        Navigator.pushNamed(context, AppRoutes.addQuestion);
         setState(() {
           _isGenerating = false;
           generatingProgress = 0.0;
@@ -65,7 +65,10 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarForExams(text: 'Generate Exam', icon: Icons.close),
+      appBar: CustomAppBarForExams(
+        text: (context).translate(LangKeys.generateExam),
+        icon: Icons.close,
+      ),
       body: Form(
         key: _formKey,
         child: Padding(
@@ -78,20 +81,23 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BuildInputField(
-                  label: "Select Subject",
+                  label: (context).translate(LangKeys.selectSubject),
                   controller: _subjectController,
-                  validator: (value) =>
-                      value!.isEmpty ? 'Please enter a subject' : null,
+                  validator: (value) => value!.isEmpty
+                      ? (context).translate(LangKeys.enterExamTitle) // Reused for simplicity
+                      : null,
                 ),
                 SizedBox(height: 20.h),
                 BuildInputField(
-                  label: "Number of Questions",
+                  label: AppLocalizations.of(context)!.translate(LangKeys.numberOfQuestions),
                   controller: _questionsController,
                   keyboardType: TextInputType.number,
                   validator: (value) {
-                    if (value!.isEmpty) return 'Please enter number of questions';
+                    if (value!.isEmpty) {
+                      return (context).translate(LangKeys.numberOfQuestions);
+                    }
                     if (int.tryParse(value) == null || int.parse(value) <= 0) {
-                      return 'Please enter a valid number';
+                      return (context).translate(LangKeys.enterDuration); // Reused for simplicity
                     }
                     return null;
                   },
@@ -101,11 +107,11 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextApp(
-                      text: "Difficulty Level",
+                      text: context.translate(LangKeys.difficultyLevel),
                       style: AppTextStyles.medium16(context),
                     ),
                     TextApp(
-                      text: difficultyLabel,
+                      text: difficultyLabel ?? '',
                       style: AppTextStyles.semiBold16(context),
                     ),
                   ],
@@ -143,7 +149,7 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
                             ),
                           )
                         : TextApp(
-                            text: "Generate Exam",
+                            text: (context).translate(LangKeys.generateExam),
                             style: AppTextStyles.body16(context).copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -153,7 +159,7 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
                 SizedBox(height: 40.h),
                 if (_isGenerating) ...[
                   TextApp(
-                    text: "Generating Exam...",
+                    text: (context).translate(LangKeys.generatingExam),
                     style: AppTextStyles.body14(context),
                   ),
                   SizedBox(height: 8.h),
@@ -166,7 +172,7 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
                   ),
                   SizedBox(height: 8.h),
                   TextApp(
-                    text: "This may take a few seconds",
+                    text: (context).translate(LangKeys.mayTakeSeconds),
                     style: AppTextStyles.caption12(context),
                   ),
                 ],
@@ -188,7 +194,7 @@ class BuildInputField extends StatelessWidget {
     this.keyboardType,
   });
 
-  final String label;
+  final String? label;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;

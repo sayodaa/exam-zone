@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/animations/animate_do.dart';
 import 'package:graduation/core/common/widgets/custom_app_bar.dart';
+import 'package:graduation/core/language/app_localizations.dart';
+import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/core/styles/styles.dart';
@@ -25,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomAppBar(text: 'ExamGenius'),
+                    CustomAppBar(text: AppLocalizations.of(context)!.translate(LangKeys.appName)!),
                     SizedBox(height: AppColorsStyles.defaultPadding.h * 0.75), // Approx 12.h
                     LayoutBuilder(
                       builder: (context, constraints) {
@@ -40,8 +42,8 @@ class HomeScreen extends StatelessWidget {
                             CustomFadeInDown(
                               duration: 700,
                               child: BuildOptionCard(
-                                title: 'Create AI Exam',
-                                subtitle: 'Generate an exam using AI based on your specifications.',
+                                title: AppLocalizations.of(context)!.translate(LangKeys.createAIExam),
+                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.createAIExamSubtitle),
                                 imagePath: AppImages.logo, // Suggest unique image
                                 onTap: () {
                                   Navigator.pushNamed(context, AppRoutes.generateQuestion);
@@ -51,8 +53,8 @@ class HomeScreen extends StatelessWidget {
                             CustomFadeInUp(
                               duration: 700,
                               child: BuildOptionCard(
-                                title: 'Create Manual Exam',
-                                subtitle: 'Build your exam from scratch with custom questions.',
+                                title: AppLocalizations.of(context)!.translate(LangKeys.createManualExam),
+                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.createManualExamSubtitle),
                                 imagePath: AppImages.logo, // Suggest unique image
                                 onTap: () {
                                   Navigator.pushNamed(context, AppRoutes.createExam);
@@ -62,8 +64,8 @@ class HomeScreen extends StatelessWidget {
                             CustomFadeInDown(
                               duration: 700,
                               child: BuildOptionCard(
-                                title: 'My Exams',
-                                subtitle: 'Access and manage all your created exams.',
+                                title: AppLocalizations.of(context)!.translate(LangKeys.examTitle),
+                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.myExamsSubtitle),
                                 imagePath: AppImages.logo, // Suggest unique image
                                 onTap: () {
                                   Navigator.pushNamed(context, AppRoutes.examResultsStudentsScreen);
@@ -73,8 +75,8 @@ class HomeScreen extends StatelessWidget {
                             CustomFadeInUp(
                               duration: 700,
                               child: BuildOptionCard(
-                                title: 'Analytics',
-                                subtitle: 'View performance metrics and insights for your exams.',
+                                title: AppLocalizations.of(context)!.translate(LangKeys.analytics),
+                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.analyticsSubtitle),
                                 imagePath: AppImages.logo, // Suggest unique image
                                 onTap: () {
                                   Navigator.pushNamed(context, AppRoutes.overWall);

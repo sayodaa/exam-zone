@@ -50,12 +50,14 @@ class SignupScreen extends StatelessWidget {
               duration: 700,
               child: Center(
                 child: Text(
-                  'Or continue with',
-                  style: TextStyle(color: Colors.white70, fontSize: 14.sp),
+                  context.translate(LangKeys.orContinueWith),
+                  style: AppTextStyles.body16(context).copyWith(
+                    color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.7),
                 ),
               ),
             ),
-            16.h.verticalSpace,
+            ),
+            20.h.verticalSpace,
             CustomFadeInUp(
               duration: 700,
               child: GoogleAuth(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/core/styles/app_images.dart';
 
 class BuildOptionCard extends StatelessWidget {
   const BuildOptionCard({
@@ -9,11 +10,10 @@ class BuildOptionCard extends StatelessWidget {
     required this.imagePath,
     required this.onTap,
   });
-
-  final String title;
-  final String subtitle;
-  final String imagePath;
-  final VoidCallback onTap;
+  final String? title;
+  final String? subtitle;
+  final String? imagePath;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class BuildOptionCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    title,
+                    title??'',
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class BuildOptionCard extends StatelessWidget {
                   LayoutBuilder(
                     builder: (context, constraints) {
                       return Text(
-                        subtitle,
+                        subtitle??'',
                         style: TextStyle(
                           fontSize: ScreenUtil().screenWidth < 360
                               ? 12.sp
@@ -72,7 +72,7 @@ class BuildOptionCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.r),
                 child: Image.asset(
-                  imagePath,
+                  imagePath??AppImages.logo, // Default image if null
                   width: 100.w, // Slightly reduced image size
                   height: 80.w,
                   fit: BoxFit.cover,

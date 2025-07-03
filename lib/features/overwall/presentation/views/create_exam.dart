@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/extensions/context_extension.dart';
+import 'package:graduation/core/language/lang_keys.dart';
+import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/overwall/presentation/views/generate_quation.dart';
 
@@ -32,7 +34,7 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarForExams(text: 'Create Exam', icon: Icons.close),
+      appBar: CustomAppBarForExams(text: context.translate(LangKeys.createExam), icon: Icons.close),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
           horizontal: AppColorsStyles.defaultPadding.w,
@@ -42,52 +44,52 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BuildInputField(
-              label: 'Exam Title',
+              label: context.translate(LangKeys.examTitle),
               controller: _titleController,
-              hint: 'Enter exam title',
+              hint: context.translate(LangKeys.enterExamTitle),
             ),
             SizedBox(height: 12.h),
             BuildInputField(
-              label: 'Subject',
+              label: context.translate(LangKeys.selectSubject),
               controller: _subjectController,
-              hint: 'Select subject',
+              hint: context.translate(LangKeys.selectSubject),
             ),
             SizedBox(height: 12.h),
             BuildInputField(
-              label: 'Level',
+              label: context.translate(LangKeys.level),
               controller: _levelController,
-              hint: 'Select level',
+              hint: context.translate(LangKeys.selectLevel),
             ),
             SizedBox(height: 12.h),
             BuildInputField(
-              label: 'Duration (minutes)',
+              label: context.translate(LangKeys.durationMinutes),
               controller: _durationController,
-              hint: 'Enter duration',
+              hint: context.translate(LangKeys.enterDuration),
             ),
             SizedBox(height: 20.h),
             TextApp(
-              text: 'Multiple Choice Questions',
+              text: context.translate(LangKeys.multipleChoice),
               style: AppTextStyles.bold18(context),
             ),
             SizedBox(height: 12.h),
             if (multipleChoiceQuestions.isEmpty)
               BuildAddQuestionButton(onTap: () {
                 setState(() {
-                  multipleChoiceQuestions.add({'question': '', 'options': []});
+                  multipleChoiceQuestions.add({context.translate(LangKeys.question): '', context.translate(LangKeys.option1): []});
                 });
               }),
             ...multipleChoiceQuestions
                 .map((q) => BuildQuestionTile(question: q, isMultipleChoice: true)),
             SizedBox(height: 20.h),
             TextApp(
-              text: 'Essay Questions',
+              text: context.translate(LangKeys.essay),
               style: AppTextStyles.bold18(context),
             ),
             SizedBox(height: 12.h),
             if (essayQuestions.isEmpty)
               BuildAddQuestionButton(onTap: () {
                 setState(() {
-                  essayQuestions.add({'question': ''});
+                  essayQuestions.add({context.translate(LangKeys.question): ''});
                 });
               }),
             ...essayQuestions
@@ -101,7 +103,7 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
                 },
                 style: Theme.of(context).elevatedButtonTheme.style,
                 child: TextApp(
-                  text: 'Create Exam',
+                  text: context.translate(LangKeys.createExam),
                   style: AppTextStyles.body16(context).copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -181,7 +183,7 @@ class BuildAddQuestionButton extends StatelessWidget {
         ),
         child: Center(
           child: TextApp(
-            text: '+ Add Question',
+            text: '+${context.translate(LangKeys.addQuestion)}',
             style: AppTextStyles.mutedBody14(context),
           ),
         ),
@@ -214,14 +216,14 @@ class BuildQuestionTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextApp(
-              text: isMultipleChoice ? 'Multiple Choice Question' : 'Essay Question',
+              text: isMultipleChoice ? context.translate(LangKeys.multipleChoice) : context.translate(LangKeys.essay),
               style: AppTextStyles.caption12(context),
             ),
             SizedBox(height: 8.h),
             TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Enter question here...',
+                hintText: context.translate(LangKeys.enterExamTitle),
                 hintStyle: AppTextStyles.mutedBody14(context),
               ),
               style: AppTextStyles.body14(context),
@@ -238,7 +240,7 @@ class BuildQuestionTile extends StatelessWidget {
                           child: TextField(
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Option ${index + 1}',
+                              hintText: '${context.translate(LangKeys.option1)} ${index + 1}',
                               hintStyle: AppTextStyles.mutedBody14(context),
                             ),
                             style: AppTextStyles.body14(context),

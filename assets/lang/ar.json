@@ -1,5 +1,5 @@
 {
-    "app_name": "إكزام جينيوس",
+    "app_name": " عبقري الاختبارات ",
     "splash_body": "أنشئ بذكاء. أسرع. أسهل.",
     "onboard_title1": "اختبارات مدعومة بالذكاء الاصطناعي",
     "onboard_body1": "أنشئ اختبارات في ثوانٍ بمساعدة الذكاء الاصطناعي.",
@@ -27,7 +27,7 @@
     "notifications": "الإشعارات",
     "manage_notifications": "إدارة الإشعارات",
     "theme": "الثيم",
-    "choose_theme": "اختر ثيم التطبيق",
+    "choose_theme": "اختر ثيم معماري التطبيق",
     "privacy": "الخصوصية",
     "configure_privacy": "تكوين إعدادات الخصوصية",
     "about": "حول",
@@ -37,6 +37,7 @@
     "number_of_questions": "عدد الأسئلة",
     "difficulty_level": "مستوى الصعوبة",
     "medium": "متوسط",
+    "hard": "صعب",
     "generate": "إنشاء",
     "generating_exam": "جارٍ إنشاء الاختبار",
     "may_take_seconds": "قد يستغرق ذلك بضع ثوانٍ",
@@ -74,5 +75,13 @@
     "change_language": "تغيير لغة التطبيق",
     "arabic": "العربية",
     "english": "الإنجليزية",
-    "languageCreate": "اختر لغة الاختبار"
+    "languageCreate": "اختر لغة الاختبار",
+    "create_ai_exam": "إنشاء اختبار ذكي",
+    "create_ai_exam_subtitle": "أنشئ اختبارًا باستخدام الذكاء الاصطناعي بناءً على مواصفاتك.",
+    "create_manual_exam": "إنشاء اختبار يدوي",
+    "create_manual_exam_subtitle": "قم ببناء اختبارك من الصفر بأسئلة مخصصة.",
+    "my_exams": "اختباراتي",
+    "my_exams_subtitle": "الوصول إلى جميع الاختبارات التي أنشأتها وإدارتها.",
+    "analytics": "التحليلات",
+    "analytics_subtitle": "عرض مقاييس الأداء ورؤى حول اختباراتك."
 }
