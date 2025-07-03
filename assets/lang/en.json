@@ -67,5 +67,12 @@
     "level": "Level",
     "select_level": "Select level",
     "duration_minutes": "Duration (minutes)",
-    "enter_duration": "Enter duration"
+    "enter_duration": "Enter duration",
+    "create": "Create",
+    "creating": "Creating",
+    "language": "Language",
+    "change_language": "Change the app language",
+    "arabic": "Arabic",
+    "english": "English",
+    "languageCreate": "Select Language for Exam"
 }

@@ -24,7 +24,7 @@ class AppLocalizations {
   // Method to load the localized strings from JSON files.
   Future<void> load() async {
     final jsonString = await rootBundle.loadString(
-      'lang/${locale.languageCode}.json',
+      'assets/lang/${locale.languageCode}.json',
     );
 
     final jsonMap = json.decode(jsonString) as Map<String, dynamic>;

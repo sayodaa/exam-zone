@@ -86,4 +86,13 @@ class LangKeys {
   static const String selectLevel = 'select_level'; // Create Exam
   static const String durationMinutes = 'duration_minutes'; // Create Exam
   static const String enterDuration = 'enter_duration'; // Create Exam
+
+  // Create Exam related Language Keys
+  static const String create = 'create'; // Create Exam
+  static const String creating = 'creating'; // Create Exam
+  static const String language = 'language'; // Create Exam
+  static const String changeLanguage = 'change_language'; // Create Exam
+  static const String arabic = 'arabic'; // Create Exam
+  static const String english = 'english'; // Create Exam
+  static const String languageCreate = 'languageCreate';
 }

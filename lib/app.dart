@@ -11,48 +11,46 @@ class ExamZone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        //  BlocProvider(
-        //       create: (context) => AppCubit()
-        //         ..changeAppThemeMode(
-        //           sharedMode: true,
-        //         ) //SharedPref().getBoolean(PrefKeys.themeMode)
-        //         ..getSavedLanguage(),
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
-      ],
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, child) {
-          return ScreenUtilInit(
-            designSize: const Size(375, 812),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) {
-              return GestureDetector(
-                onTap: () {
-                  // إلغاء تركيز لوحة المفاتيح عند النقر خارج الحقول
-                  FocusManager.instance.primaryFocus?.unfocus();
-                },
-                child: MaterialApp(
-                  locale: Locale('ar'), //Locale(cubit.currentLangCode),
-                  localizationsDelegates:
-                      AppLocalizationsSetup.localizationsDelegates,
-                  supportedLocales: AppLocalizationsSetup.supportedLocales,
-                  localeResolutionCallback:
-                      AppLocalizationsSetup.localeResolutionCallback,
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const ExamZoneApp(),
+    );
+  }
+}
 
-                  debugShowCheckedModeBanner: false,
-                  theme: AppThemes.lightTheme,
-                  darkTheme: AppThemes.darkTheme,
-                  themeMode: themeProvider.themeMode,
-                  initialRoute: AppRoutes.splash,
-                  onGenerateRoute: AppRoutes.onGenerateRoute,
-                ),
-              );
-            },
-          );
-        },
-      ),
+class ExamZoneApp extends StatelessWidget {
+  const ExamZoneApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GestureDetector(
+          onTap: () {
+            // إلغاء تركيز لوحة المفاتيح عند النقر خارج الحقول
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: MaterialApp(
+            locale: themeProvider.currentLocale, // ✅ اللغة حسب ThemeProvider
+            localizationsDelegates:
+                AppLocalizationsSetup.localizationsDelegates,
+            supportedLocales: AppLocalizationsSetup.supportedLocales,
+            localeResolutionCallback:
+                AppLocalizationsSetup.localeResolutionCallback,
+            debugShowCheckedModeBanner: false,
+            theme: AppThemes.lightTheme,
+            darkTheme: AppThemes.darkTheme,
+            themeMode: themeProvider.themeMode,
+            initialRoute: AppRoutes.splash,
+            onGenerateRoute: AppRoutes.onGenerateRoute,
+          ),
+        );
+      },
     );
   }
 }

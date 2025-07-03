@@ -18,7 +18,7 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _controller = PageController();
-   bool isLast = false;
+  bool isLast = false;
 
   void submit() async {
     await SharedPref().setBoolean(PrefKeys.onBoarding, true).then((value) {

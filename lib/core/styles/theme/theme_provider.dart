@@ -3,17 +3,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider with ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.dark;
-
-  ThemeMode get themeMode => _themeMode;
-
-  bool get isDarkMode => _themeMode == ThemeMode.dark;
+  String _languageCode = 'en';
 
   ThemeProvider() {
-    _loadTheme();
+    _loadPreferences();
   }
 
+  // Theme Logic
+  ThemeMode get themeMode => _themeMode;
+  bool get isDarkMode => _themeMode == ThemeMode.dark;
+
   void toggleTheme() async {
-    _themeMode = _themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+    _themeMode = isDarkMode ? ThemeMode.light : ThemeMode.dark;
     notifyListeners();
     await _saveTheme();
   }
@@ -26,13 +27,33 @@ class ThemeProvider with ChangeNotifier {
 
   Future<void> _saveTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('themeMode', _themeMode == ThemeMode.dark ? 'dark' : 'light');
+    await prefs.setString('themeMode', isDarkMode ? 'dark' : 'light');
   }
 
-  Future<void> _loadTheme() async {
+  // Language Logic
+  Locale get currentLocale => Locale(_languageCode);
+
+  void changeLanguage(String code) async {
+    _languageCode = code;
+    notifyListeners();
+    await _saveLanguage();
+  }
+
+  Future<void> _saveLanguage() async {
     final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('languageCode', _languageCode);
+  }
+
+  Future<void> _loadPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // Load theme
     final themeString = prefs.getString('themeMode') ?? 'dark';
     _themeMode = themeString == 'dark' ? ThemeMode.dark : ThemeMode.light;
+
+    // Load language
+    _languageCode = prefs.getString('languageCode') ?? 'en';
+
     notifyListeners();
   }
 }

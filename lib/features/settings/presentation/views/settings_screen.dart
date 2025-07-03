@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/language/app_localizations.dart';
+import 'package:graduation/core/language/lang_keys.dart'; // Import LangKeys
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/theme/app_themes_styles.dart';
 import 'package:graduation/core/styles/theme/theme_provider.dart';
@@ -19,7 +21,7 @@ class SettingsScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: TextApp(
-          text: 'Settings',
+          text: AppLocalizations.of(context)?.translate(LangKeys.settings) ?? '',
           style: AppTextStyles.semiBold20(context),
         ),
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -33,22 +35,22 @@ class SettingsScreen extends StatelessWidget {
         children: [
           _buildSettingsTile(
             icon: Icons.person,
-            title: 'Profile',
-            subtitle: 'View and edit your profile',
+            title: AppLocalizations.of(context)?.translate(LangKeys.profile) ?? '',
+            subtitle: AppLocalizations.of(context)?.translate(LangKeys.viewEditProfile) ?? '',
             context: context,
           ),
           SizedBox(height: 8.h),
           _buildSettingsTile(
             icon: Icons.notifications,
-            title: 'Notifications',
-            subtitle: 'Manage your notifications',
+            title: AppLocalizations.of(context)?.translate(LangKeys.notifications) ?? '',
+            subtitle: AppLocalizations.of(context)?.translate(LangKeys.manageNotifications)??'',
             context: context,
           ),
           SizedBox(height: 8.h),
           _buildSettingsTile(
             icon: Icons.brightness_6,
-            title: 'Theme',
-            subtitle: 'Switch between Light and Dark mode',
+            title: AppLocalizations.of(context)?.translate(LangKeys.theme)??'',
+            subtitle: AppLocalizations.of(context)?.translate(LangKeys.chooseTheme) ?? '',
             context: context,
             trailing: Switch(
               value: themeProvider.isDarkMode,
@@ -61,16 +63,25 @@ class SettingsScreen extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           _buildSettingsTile(
-            icon: Icons.lock,
-            title: 'Privacy',
-            subtitle: 'Configure your privacy settings',
+            icon: Icons.language,
+            title: AppLocalizations.of(context)?.translate(LangKeys.language) ?? '',
+            subtitle: AppLocalizations.of(context)?.translate(LangKeys.changeLanguage) ?? '',
             context: context,
+            trailing: Switch(
+              value: themeProvider.currentLocale.languageCode == 'ar',
+              onChanged: (value) {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .changeLanguage(value ? 'ar' : 'en');
+              },
+              activeColor: Theme.of(context).sliderTheme.thumbColor,
+              inactiveTrackColor: Theme.of(context).sliderTheme.inactiveTrackColor,
+            ),
           ),
           SizedBox(height: 8.h),
           _buildSettingsTile(
             icon: Icons.info,
-            title: 'About',
-            subtitle: 'Learn more about the app',
+            title: AppLocalizations.of(context)?.translate(LangKeys.about) ?? '',
+            subtitle: AppLocalizations.of(context)?.translate(LangKeys.learnMore) ?? '',
             context: context,
           ),
         ],
