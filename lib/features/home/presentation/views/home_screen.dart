@@ -42,8 +42,8 @@ class HomeScreen extends StatelessWidget {
                             CustomFadeInDown(
                               duration: 700,
                               child: BuildOptionCard(
-                                title: AppLocalizations.of(context)!.translate(LangKeys.createAIExam),
-                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.createAIExamSubtitle),
+                                title: AppLocalizations.of(context)!.translate(LangKeys.createAiExam),
+                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.createAiExamSubtitle),
                                 imagePath: AppImages.logo, // Suggest unique image
                                 onTap: () {
                                   Navigator.pushNamed(context, AppRoutes.generateQuestion);
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                               duration: 700,
                               child: BuildOptionCard(
                                 title: AppLocalizations.of(context)!.translate(LangKeys.analytics),
-                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.analyticsSubtitle),
+                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.exportAnalytics),
                                 imagePath: AppImages.logo, // Suggest unique image
                                 onTap: () {
                                   Navigator.pushNamed(context, AppRoutes.overWall);

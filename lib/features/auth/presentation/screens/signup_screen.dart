@@ -28,7 +28,10 @@ class SignupScreen extends StatelessWidget {
             40.h.verticalSpace,
             CustomFadeInLeft(
               duration: 700,
-              child: TextApp(text:  context.translate(LangKeys.welcome), style: AppTextStyles.bold24(context)),
+              child: TextApp(
+                text: context.translate(LangKeys.welcome),
+                style: AppTextStyles.bold24(context),
+              ),
             ),
             30.h.verticalSpace,
             CustomFadeInRight(
@@ -38,16 +41,20 @@ class SignupScreen extends StatelessWidget {
             16.h.verticalSpace,
             CustomFadeInLeft(
               duration: 700,
-              child: AppTextField(labelText:context.translate(LangKeys.password),),
+              child: AppTextField(
+                labelText: context.translate(LangKeys.password),
+              ),
             ),
             20.h.verticalSpace,
             CustomFadeInUp(
               duration: 700,
-              child: AuthButton(text:  context.translate(LangKeys.signUp), 
-              //routeName: AppRoutes.home
-              onPressed: () {
-                
-              },),
+              child: AuthButton(
+                text: context.translate(LangKeys.signUp),
+                //routeName: AppRoutes.home
+                onPressed: () {
+                  context.pushNamedAndRemoveUntil(AppRoutes.mainV);
+                },
+              ),
             ),
             20.h.verticalSpace,
             CustomFadeInUp(
@@ -56,16 +63,15 @@ class SignupScreen extends StatelessWidget {
                 child: Text(
                   context.translate(LangKeys.orContinueWith),
                   style: AppTextStyles.body16(context).copyWith(
-                    color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.7),
+                    color: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge?.color?.withOpacity(0.7),
+                  ),
                 ),
               ),
             ),
-            ),
             20.h.verticalSpace,
-            CustomFadeInUp(
-              duration: 700,
-              child: GoogleAuth(),
-            ),
+            CustomFadeInUp(duration: 700, child: GoogleAuth()),
             const Spacer(),
             CustomFadeInUp(
               duration: 800,

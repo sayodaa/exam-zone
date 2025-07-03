@@ -4,12 +4,14 @@ import 'package:graduation/core/routes/base_routes.dart';
 import 'package:graduation/features/auth/presentation/screens/login_screen.dart';
 import 'package:graduation/features/auth/presentation/screens/signup_screen.dart';
 import 'package:graduation/features/home/presentation/views/home_screen.dart';
+import 'package:graduation/features/home/presentation/views/main_view.dart';
 import 'package:graduation/features/onboarding/onboard_view.dart';
 import 'package:graduation/features/overwall/presentation/views/add_quation.dart';
 import 'package:graduation/features/overwall/presentation/views/create_exam.dart';
 import 'package:graduation/features/overwall/presentation/views/exam_result2.dart';
 import 'package:graduation/features/overwall/presentation/views/generate_quation.dart';
 import 'package:graduation/features/overwall/presentation/views/overwall_screen.dart';
+import 'package:graduation/features/profile/profile_screen.dart';
 import 'package:graduation/features/settings/presentation/views/settings_screen.dart';
 import 'package:graduation/features/splash/presentation/splash_view.dart';
 
@@ -26,6 +28,7 @@ class AppRoutes {
   static const String addQuestion = '/addQuestion';
   static const String generateQuestion = '/generateQuestion';
   static const String createExam = '/createExam';
+  static const String mainV = '/mainV';
   static Route<void> onGenerateRoute(RouteSettings settings) {
     
     switch (settings.name) {
@@ -34,6 +37,14 @@ class AppRoutes {
       case splash:
         return BaseRoute(
           page: const SplashView(),
+        );
+        case mainV:
+        return BaseRoute(
+          page: const MainView(),
+        );
+        case profile:
+        return BaseRoute(
+          page: const ProfileScreen(),
         );
       case login:
         return BaseRoute(

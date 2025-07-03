@@ -27,6 +27,7 @@ class BuildOptionCard extends StatelessWidget {
           border: Border.all(color: Colors.white10),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
               flex: 3,

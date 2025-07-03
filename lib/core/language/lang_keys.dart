@@ -1,110 +1,122 @@
 class LangKeys {
   // Splash
-  static const String appName = 'app_name'; // Onboard
-  static const String splashBody = 'splash_body'; // Splash
+  static const String appName = 'appName';
+  static const String splashBody = 'splashBody';
 
   // Onboard related keys
-  static const String onboardTitle1 = 'onboard_title1'; // Onboard
-  static const String onboardBody1 = 'onboard_body1'; // Onboard
-  static const String onboardTitle2 = 'onboard_title2'; // Onboard
-  static const String onboardBody2 = 'onboard_body2'; // Onboard
-  static const String onboardTitle3 = 'onboard_title3'; // Onboard
-  static const String onboardBody3 = 'onboard_body3'; // Onboard
+  static const String onboardTitle1 = 'onboardTitle1';
+  static const String onboardBody1 = 'onboardBody1';
+  static const String onboardTitle2 = 'onboardTitle2';
+  static const String onboardBody2 = 'onboardBody2';
+  static const String onboardTitle3 = 'onboardTitle3';
+  static const String onboardBody3 = 'onboardBody3';
 
   // Navigation related keys
-  static const String next = 'next'; // Navigation
-  static const String getStarted = 'get_started'; // Navigation
-  static const String skip = 'skip'; // Navigation // Not used yet
+  static const String next = 'next';
+  static const String getStarted = 'getStarted';
+  static const String skip = 'skip';
 
-  // auth related keys
-  static const String welcome = 'welcome'; // Onboard
-  static const String welcomeBack = 'welcome_back'; // Onboard
-  static const String login = 'login'; // Login
-  static const String email = 'email'; // Login
-  static const String password = 'password'; // Login
-  static const String continueWithGoogle = 'continue_with_google'; // Login
-  static const String alreadyHaveAccount = 'already_have_account'; // Login
-  static const String forgotPassword = 'forgot_password'; // Login
-  static const String signUp = 'sign_up'; // Sign Up
-  static const String youHaveAccount = 'you_have_account'; // Sign Up
-  static const String orContinueWith = 'or_continue_with'; // Sign Up
+  // Auth related keys
+  static const String welcome = 'welcome';
+  static const String welcomeBack = 'welcomeBack';
+  static const String login = 'login';
+  static const String email = 'email';
+  static const String password = 'password';
+  static const String continueWithGoogle = 'continueWithGoogle';
+  static const String alreadyHaveAccount = 'alreadyHaveAccount';
+  static const String forgotPassword = 'forgotPassword';
+  static const String signUp = 'signUp';
+  static const String youHaveAccount = 'youHaveAccount';
+  static const String orContinueWith = 'orContinueWith';
+
   // Settings related keys
-  static const String settings = 'settings'; // Settings
-  static const String profile = 'profile'; // Settings
-  static const String viewEditProfile = 'view_edit_profile'; // Settings
-  static const String notifications = 'notifications'; // Settings
-  static const String manageNotifications = 'manage_notifications'; // Settings
-  static const String theme = 'theme'; // Settings
-  static const String chooseTheme = 'choose_theme'; // Settings
-  static const String privacy = 'privacy'; // Settings
-  static const String configurePrivacy = 'configure_privacy'; // Settings
-  static const String about = 'about'; // Settings
-  static const String learnMore = 'learn_more'; // Settings
+  static const String settings = 'settings';
+  static const String profile = 'profile';
+  static const String viewEditProfile = 'viewEditProfile';
+  static const String notifications = 'notifications';
+  static const String manageNotifications = 'manageNotifications';
+  static const String theme = 'theme';
+  static const String chooseTheme = 'chooseTheme';
+  static const String privacy = 'privacy';
+  static const String configurePrivacy = 'configurePrivacy';
+  static const String about = 'about';
+  static const String learnMore = 'learnMore';
 
   // Generate Exam related keys
-  static const String generateExam = 'generate_exam'; // Generate Exam
-  static const String selectSubject = 'select_subject'; // Generate Exam
-  static const String numberOfQuestions =
-      'number_of_questions'; // Generate Exam
-  static const String difficultyLevel = 'difficulty_level'; // Generate Exam
-  static const String easy = 'easy'; // Generate Exam
-  static const String medium = 'medium'; // Generate Exam
-  static const String hard = 'hard'; // Generate Exam
-  static const String generate = 'generate'; // Generate Exam
-  static const String generatingExam = 'generating_exam'; // Generate Exam
-  static const String mayTakeSeconds = 'may_take_seconds'; // Generate Exam
+  static const String generateExam = 'generateExam';
+  static const String selectSubject = 'selectSubject';
+  static const String numberOfQuestions = 'numberOfQuestions';
+  static const String difficultyLevel = 'difficultyLevel';
+  static const String easy = 'easy';
+  static const String medium = 'medium';
+  static const String hard = 'hard';
+  static const String generate = 'generate';
+  static const String generatingExam = 'generatingExam';
+  static const String mayTakeSeconds = 'mayTakeSeconds';
 
   // Exam Results related keys
-  static const String examResults = 'exam results'; // Exam Results
-  static const String students = 'students'; // Exam Results
-  static const String score = 'score'; // Exam Results
-  static const String grade = 'grade'; // Exam Results
-  static const String overallPerformance =
-      'overall_performance'; // Exam Results
-  static const String correctAnswers = 'correct answers'; // Exam Results
-  static const String totalScore = 'total score'; // Exam Results
-  static const String incorrectAnswers = 'incorrect answers'; // Exam Results
-  static const String performanceByType = 'performance by type'; // Exam Results
-  static const String essay = 'essay'; // Exam Results
-  static const String multipleChoice = 'multiple choice'; // Exam Results
-  static const String detailedAnswers = 'detailed answers'; // Exam Results
-  static const String correctYourAnswer = 'correct your answer'; // Exam Results
-  static const String question = 'question'; // Exam Results
+  static const String examResults = 'examResults';
+  static const String students = 'students';
+  static const String score = 'score';
+  static const String grade = 'grade';
+  static const String overallPerformance = 'overallPerformance';
+  static const String correctAnswers = 'correctAnswers';
+  static const String totalScore = 'totalScore';
+  static const String incorrectAnswers = 'incorrectAnswers';
+  static const String performanceByType = 'performanceByType';
+  static const String essay = 'essay';
+  static const String multipleChoice = 'multipleChoice';
+  static const String detailedAnswers = 'detailedAnswers';
+  static const String correctYourAnswer = 'correctYourAnswer';
+  static const String question = 'question';
 
   // Add Questions related keys
-  static const String addQuestions = 'add questions'; // Add Questions
-  static const String option1 = 'option 1'; // Add Questions
-  static const String option2 = 'option 2'; // Add Questions
-  static const String option3 = 'option 3'; // Add Questions
-  static const String option4 = 'option 4'; // Add Questions
-  static const String addQuestion = 'add question'; // Add Questions
-  static const String save = 'save'; // Add Questions
+  static const String addQuestions = 'addQuestions';
+  static const String option1 = 'option1';
+  static const String option2 = 'option2';
+  static const String option3 = 'option3';
+  static const String option4 = 'option4';
+  static const String addQuestion = 'addQuestion';
+  static const String save = 'save';
 
   // Create Exam related keys
-  static const String createExam = 'create exam'; // Create Exam
-  static const String createAIExam = 'create ai exam';
-  static const String createManualExam = 'create manual exam';
-  static const String examTitle = 'exam title'; // Create Exam
-  static const String enterExamTitle = 'enter exam title'; // Create Exam
-  static const String level = 'level'; // Create Exam
-  static const String selectLevel = 'select level'; // Create Exam
-  static const String durationMinutes = 'duration minutes'; // Create Exam
-  static const String enterDuration = 'enter duration'; // Create Exam
-
-  // Create Exam related Language Keys
-  static const String create = 'create'; // Create Exam
-  static const String creating = 'creating'; // Create Exam
-  static const String language = 'language'; // Create Exam
-  static const String changeLanguage = 'change_language'; // Create Exam
-  static const String arabic = 'arabic'; // Create Exam
-  static const String english = 'english'; // Create Exam
+  static const String createExam = 'createExam';
+  static const String createAiExam = 'createAiExam';
+  static const String createManualExam = 'createManualExam';
+  static const String createAiExamSubtitle = 'createAiExamSubtitle';
+  static const String createManualExamSubtitle = 'createManualExamSubtitle';
+  static const String myExams = 'myExams';
+  static const String myExamsSubtitle = 'myExamsSubtitle';
+  static const String examTitle = 'examTitle';
+  static const String enterExamTitle = 'enterExamTitle';
+  static const String level = 'level';
+  static const String selectLevel = 'selectLevel';
+  static const String durationMinutes = 'durationMinutes';
+  static const String enterDuration = 'enterDuration';
+  static const String create = 'create';
+  static const String creating = 'creating';
+  static const String language = 'language';
+  static const String changeLanguage = 'changeLanguage';
+  static const String arabic = 'arabic';
+  static const String english = 'english';
   static const String languageCreate = 'languageCreate';
-  static const String createAIExamSubtitle = 'Generate an exam using AI based on your specifications.';
-  static const String createManualExamSubtitle = 'Build your exam from scratch with custom questions.';
-  static const String myExamsSubtitle = 'Access and manage all your created exams.';
-  static const String analyticsSubtitle = 'View and analyze your exam performance.';
-  // Create analytics related Language Keys
-  static const String analytics = 'analytics'; // Create Analytics
-  static const String viewAnalytics = 'view analytics'; // Create Analytics
-  static const String exportAnalytics = 'export analytics'; // Create Analytics
+
+  // Analytics related keys
+  static const String analytics = 'analytics';
+  static const String viewAnalytics = 'viewAnalytics';
+  static const String exportAnalytics = 'exportAnalytics';
+
+  // New keys for exam management
+  static const String examDetails = 'examDetails';
+  static const String examCreated = 'examCreated';
+  static const String examUpdated = 'examUpdated';
+  static const String examDeleted = 'examDeleted';
+  static const String errorOccurred = 'errorOccurred';
+  static const String noExamsFound = 'noExamsFound';
+  static const String loading = 'loading';
+  static const String search = 'search';
+  static const String searchExams = 'searchExams';
+  static const String filterBySubject = 'filterBySubject';
+  static const String filterByDifficulty = 'filterByDifficulty';
+  static const String clearFilters = 'clearFilters';
 }

@@ -14,7 +14,6 @@ import 'package:graduation/core/services/shared_pref/shared_pref.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/core/utils/app_regex.dart';
-import 'package:graduation/core/utils/app_string.dart';
 import 'package:graduation/features/auth/data/cubit/auth_cubit.dart';
 import 'package:graduation/features/auth/presentation/widgets/auth_button.dart';
 import 'package:graduation/features/auth/presentation/widgets/google_auth.dart';
@@ -193,6 +192,10 @@ class LoginScreen extends StatelessWidget {
                                         email: emailController.text,
                                         password: passwordController.text,
                                       );
+                                      context
+                                          .pushNamedAndRemoveUntil(
+                                        AppRoutes.mainV,
+                                      );
                                     }
                                   },
                                 ),
@@ -220,7 +223,6 @@ class LoginScreen extends StatelessWidget {
                           height: AppColorsStyles.defaultPadding.h,
                         ), // 16.h
                         CustomFadeInUp(duration: 700, child: GoogleAuth()),
-
                         CustomFadeInUp(
                           duration: 800,
                           child: HaveAuth(
