@@ -37,7 +37,7 @@ class AppRoutes {
         );
       case login:
         return BaseRoute(
-          page: const LoginScreen(),
+          page:  LoginScreen(),
         );
         case signUp:
         return BaseRoute(

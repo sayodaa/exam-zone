@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "360100096435",
+    "project_id": "online-exam-e718f",
+    "storage_bucket": "online-exam-e718f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360100096435:android:0f19c9b3ebca2fd9a743c6",
+        "android_client_info": {
+          "package_name": "com.example.graduation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360100096435-3v1njuq7mksatfm93bdv9ttmcldogv46.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graduation",
+            "certificate_hash": "f8903890e32a5a498eb6d9a845ba4a4597d26628"
+          }
+        },
+        {
+          "client_id": "360100096435-ug577uks9oghmco76337qkf1pru9ljo3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMHXVC2wtF-amd2ixM7JNDTa-ahlYPPFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360100096435-ug577uks9oghmco76337qkf1pru9ljo3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
