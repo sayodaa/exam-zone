@@ -43,7 +43,11 @@ class SignupScreen extends StatelessWidget {
             20.h.verticalSpace,
             CustomFadeInUp(
               duration: 700,
-              child: AuthButton(text:  context.translate(LangKeys.signUp), routeName: AppRoutes.home),
+              child: AuthButton(text:  context.translate(LangKeys.signUp), 
+              //routeName: AppRoutes.home
+              onPressed: () {
+                
+              },),
             ),
             20.h.verticalSpace,
             CustomFadeInUp(

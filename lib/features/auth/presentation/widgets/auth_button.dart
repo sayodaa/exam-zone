@@ -4,14 +4,10 @@ import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 
 class AuthButton extends StatelessWidget {
-  const AuthButton({
-    super.key,
-    required this.text,
-    required this.routeName,
-  });
+  const AuthButton({super.key, required this.text, required this.onPressed});
 
   final String text;
-  final String routeName; // Define the route name for navigation
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +16,19 @@ class AuthButton extends StatelessWidget {
       height: 50.h,
       child: ElevatedButton(
         style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-              shape: WidgetStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-              ),
-            ),
-        onPressed: () {
-          Navigator.pushNamed(context, routeName);
-        },
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+          ),
+        ),
+        onPressed: onPressed,
+        // () {
+        //   Navigator.pushNamed(context, routeName);
+        // }
         child: TextApp(
           text: text,
-          style: AppTextStyles.body16(context).copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppTextStyles.body16(
+            context,
+          ).copyWith(fontWeight: FontWeight.bold),
         ),
       ),
     );

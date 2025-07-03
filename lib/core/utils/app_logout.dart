@@ -13,7 +13,7 @@ class AppLogout {
 
   Future<void> logout() async {
     // final context = sl<GlobalKey<NavigatorState>>().currentState!.context;
-    await SharedPref().removePreference(PrefKeys.accessToken);
+    // await SharedPref().removePreference(PrefKeys.accessToken);
     await SharedPref().removePreference(PrefKeys.userId);
     await SharedPref().removePreference(PrefKeys.userRole);
     // await HiveDatabase().clearAllBox();
