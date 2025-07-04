@@ -36,13 +36,15 @@ class SignupScreen extends StatelessWidget {
             ShowToast.showToastErrorTop(message: state.errorMessage);
           }
           if (state is CreateUserSuccess) {
-            Future.delayed(const Duration(seconds: 2), () {
+            Future.delayed(const Duration(seconds: 1), () {
               SharedPref().setString(PrefKeys.uId, state.uId).then((value) {
                 if (context.mounted) {
                   context.pushName(AppRoutes.mainV);
+                  ShowToast.showToastSuccessTop(
+                    message: 'Regestration successful',
+                  );
                 }
               });
-              ShowToast.showToastSuccessTop(message: 'Regestration successful');
             });
           }
         },

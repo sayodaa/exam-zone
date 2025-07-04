@@ -44,13 +44,13 @@ class LoginScreen extends StatelessWidget {
             }
           }
           if (state is LoginSuccess) {
-            Future.delayed(const Duration(seconds: 2), () {
+            Future.delayed(const Duration(seconds: 1), () {
               SharedPref().setString(PrefKeys.uId, state.uId).then((value) {
                 if (context.mounted) {
-                  context.pushName(AppRoutes.settingsView);
+                  context.pushName(AppRoutes.mainV);
+                  ShowToast.showToastSuccessTop(message: 'Login successful');
                 }
               });
-              ShowToast.showToastSuccessTop(message: 'Login successful');
             });
           }
         },
@@ -193,9 +193,6 @@ class LoginScreen extends StatelessWidget {
                                       AuthCubit.get(context).login(
                                         email: emailController.text,
                                         password: passwordController.text,
-                                      );
-                                      context.pushNamedAndRemoveUntil(
-                                        AppRoutes.mainV,
                                       );
                                     }
                                   },
