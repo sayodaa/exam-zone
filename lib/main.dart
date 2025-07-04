@@ -8,20 +8,16 @@ import 'package:graduation/core/services/shared_pref/shared_pref.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Platform.isAndroid
-      ? await Firebase.initializeApp(
-          options: const FirebaseOptions(
-            apiKey:
-                'AIzaSyAMHXVC2wtF-amd2ixM7JNDTa-ahlYPPFY', 
-            appId:
-                '1:360100096435:android:0f19c9b3ebca2fd9a743c6', 
-            messagingSenderId: '360100096435',
-            projectId: 'online-exam-e718f',
-            storageBucket: 'online-exam-e718f.appspot.com',
-          ),
-        )
-      : await Firebase.initializeApp();
-    await SharedPref().instantiatePreferences();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: 'AIzaSyAMHXVC2wtF-amd2ixM7JNDTa-ahlYPPFY',
+      appId: '1:360100096435:android:0f19c9b3ebca2fd9a743c6',
+      messagingSenderId: '360100096435',
+      projectId: 'online-exam-e718f',
+      storageBucket: 'online-exam-e718f.appspot.com',
+    ),
+  );
+  await SharedPref().instantiatePreferences();
   Bloc.observer = AppBlocObserver();
   runApp(ExamZone());
 }

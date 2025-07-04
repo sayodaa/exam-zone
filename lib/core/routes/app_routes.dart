@@ -30,58 +30,33 @@ class AppRoutes {
   static const String createExam = '/createExam';
   static const String mainV = '/mainV';
   static Route<void> onGenerateRoute(RouteSettings settings) {
-    
     switch (settings.name) {
       case onBoarding:
         return BaseRoute(page: const OnBoardingScreen());
       case splash:
-        return BaseRoute(
-          page: const SplashView(),
-        );
-        case mainV:
-        return BaseRoute(
-          page: const MainView(),
-        );
-        case profile:
-        return BaseRoute(
-          page: const ProfileScreen(),
-        );
+        return BaseRoute(page: const SplashView());
+      case mainV:
+        return BaseRoute(page: const MainView());
+      case profile:
+        return BaseRoute(page: const ProfileScreen());
       case login:
-        return BaseRoute(
-          page:  LoginScreen(),
-        );
-        case signUp:
-        return BaseRoute(
-          page: const SignupScreen(),
-        );
-        case home:
-        return BaseRoute(
-          page: const HomeScreen(),
-        );
-        case settingsView:
-        return BaseRoute(
-          page: const SettingsScreen(),
-        );
-        case overWall:
-        return BaseRoute(
-          page: const ExamResultsScreen(),
-        );
-        case examResultsStudentsScreen:
-        return BaseRoute(
-          page: const ExamResultsStudentsScreen(),
-        );
-        case addQuestion:
-        return BaseRoute(
-          page: const AddQuestionsScreen(),
-        );
-        case generateQuestion:
-        return BaseRoute(
-          page: const GenerateExamScreen(),
-        );
+        return BaseRoute(page: LoginScreen());
+      case signUp:
+        return BaseRoute(page: SignupScreen());
+      case home:
+        return BaseRoute(page: const HomeScreen());
+      case settingsView:
+        return BaseRoute(page: const SettingsScreen());
+      case overWall:
+        return BaseRoute(page: const ExamResultsScreen());
+      case examResultsStudentsScreen:
+        return BaseRoute(page: const ExamResultsStudentsScreen());
+      case addQuestion:
+        return BaseRoute(page: const AddQuestionsScreen());
+      case generateQuestion:
+        return BaseRoute(page: const GenerateExamScreen());
       case createExam:
-        return BaseRoute(
-          page: const CreateExamScreen(),
-        );
+        return BaseRoute(page: const CreateExamScreen());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

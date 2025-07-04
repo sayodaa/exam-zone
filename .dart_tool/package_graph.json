@@ -10,6 +10,7 @@
         "animate_do",
         "animated_bottom_navigation_bar",
         "animated_splash_screen",
+        "cloud_firestore",
         "connectivity_plus",
         "cupertino_icons",
         "firebase_auth",
@@ -204,6 +205,19 @@
         "meta",
         "nm",
         "web"
+      ]
+    },
+    {
+      "name": "cloud_firestore",
+      "version": "5.6.11",
+      "dependencies": [
+        "cloud_firestore_platform_interface",
+        "cloud_firestore_web",
+        "collection",
+        "firebase_core",
+        "firebase_core_platform_interface",
+        "flutter",
+        "meta"
       ]
     },
     {
@@ -596,6 +610,31 @@
       "name": "connectivity_plus_platform_interface",
       "version": "2.0.1",
       "dependencies": [
+        "flutter",
+        "meta",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "cloud_firestore_web",
+      "version": "4.4.11",
+      "dependencies": [
+        "_flutterfire_internals",
+        "cloud_firestore_platform_interface",
+        "collection",
+        "firebase_core",
+        "firebase_core_web",
+        "flutter",
+        "flutter_web_plugins"
+      ]
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "version": "6.6.11",
+      "dependencies": [
+        "_flutterfire_internals",
+        "collection",
+        "firebase_core",
         "flutter",
         "meta",
         "plugin_platform_interface"
