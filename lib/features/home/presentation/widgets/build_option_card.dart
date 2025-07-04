@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/styles/app_images.dart';
+import 'package:graduation/core/styles/styles.dart';
 
 class BuildOptionCard extends StatelessWidget {
   const BuildOptionCard({
@@ -22,7 +23,7 @@ class BuildOptionCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(12.w), // Reduced padding for smaller screens
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          color: AppColorsStyles.light.accentColor, // Slightly transparent background
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(color: Colors.white10),
         ),

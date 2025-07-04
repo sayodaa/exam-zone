@@ -21,6 +21,13 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
   late AnimationController _controller;
   late Animation<double> _animation;
 
+  // Generate unique keys for each screen to force rebuild
+  final List<GlobalKey> _screenKeys = [
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+  ];
+
   final List<Widget> _screens = const [
     HomeScreen(),
     ProfileScreen(),
@@ -31,17 +38,17 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
     _NavBarItemData(
       icon: Icons.dashboard,
       labelKey: LangKeys.createExam,
-      color: AppColorsStyles.dark.primaryColor, // Adjust to your primary color
+      color: AppColorsStyles.light.primaryColor,
     ),
     _NavBarItemData(
       icon: Icons.person_outline,
       labelKey: LangKeys.profile,
-      color: AppColorsStyles.dark.accentColor, // Adjust to your accent color
+      color: AppColorsStyles.light.accentColor,
     ),
     _NavBarItemData(
       icon: Icons.settings,
       labelKey: LangKeys.settings,
-      color: AppColorsStyles.dark.secondaryColor, // Adjust to your secondary color
+      color: AppColorsStyles.light.secondaryColor,
     ),
   ];
 
@@ -68,6 +75,8 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
     if (_currentIndex != index) {
       setState(() {
         _currentIndex = index;
+        // Update keys to force rebuild of the selected screen
+        _screenKeys[index] = GlobalKey();
       });
       _controller.reset();
       _controller.forward();
@@ -80,7 +89,12 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: IndexedStack(
         index: _currentIndex,
-        children: _screens,
+        children: List.generate(_screens.length, (index) {
+          return KeyedSubtree(
+            key: _screenKeys[index],
+            child: _screens[index],
+          );
+        }),
       ),
       bottomNavigationBar: _buildAnimatedBottomNavBar(context),
     );
@@ -100,7 +114,7 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
         ],
         borderRadius: BorderRadius.vertical(top: Radius.circular(AppColorsStyles.defaultBorderRadius.r)),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: AppColorsStyles.defaultPadding.w, vertical: 10.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(_navItems.length, (index) {
@@ -124,7 +138,7 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
             decoration: BoxDecoration(
               color: isSelected ? item.color.withOpacity(0.1) : Colors.transparent,
-              borderRadius: BorderRadius.circular(16.r),
+              borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -158,9 +172,9 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
                   duration: const Duration(milliseconds: 300),
                   child: isSelected
                       ? TextApp(
-                          text: (context).translate(item.labelKey),
+                          text: context.translate(item.labelKey),
                           style: AppTextStyles.caption12(context).copyWith(
-                            color: AppColorsStyles.dark.secondaryColor,
+                            color: Theme.of(context).textTheme.bodyMedium?.color,
                             fontWeight: FontWeight.bold,
                           ),
                         )
