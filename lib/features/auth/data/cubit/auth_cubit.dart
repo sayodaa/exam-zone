@@ -20,7 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
         .then((value) {
           log(value.user!.email.toString());
           log(value.user!.uid.toString());
-
+         
           emit(LoginSuccess(value.user!.uid));
         })
         .catchError((error) {
@@ -43,7 +43,6 @@ class AuthCubit extends Cubit<AuthState> {
           createuser(
             email: email,
             password: password,
-
             username: username,
             uId: value.user!.uid,
           );
@@ -60,7 +59,6 @@ class AuthCubit extends Cubit<AuthState> {
     required String username,
     required String email,
     required String password,
-
     required String uId,
   }) {
     UserModel model = UserModel(

@@ -45,6 +45,7 @@ dependencies:
   flutter_svg: ^2.2.0
   fluttertoast: ^8.2.12
   freezed_annotation: ^3.0.0
+  image_picker: ^1.1.2
   provider: ^6.1.5
   shared_preferences: ^2.5.3
   smooth_page_indicator: ^1.2.1

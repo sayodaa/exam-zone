@@ -16,7 +16,6 @@ void main() async {
       storageBucket: 'online-exam-e718f.appspot.com',
     ),
   );
-  
   await SharedPref().instantiatePreferences();
   Bloc.observer = AppBlocObserver();
   runApp(ExamZone());

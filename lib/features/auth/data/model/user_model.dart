@@ -3,7 +3,7 @@ class UserModel {
   String? email;
   String? uId;
   bool? isAdmin;
-  String? name;
+
   String? password;
   String? personImg;
   String? username;
@@ -13,7 +13,7 @@ class UserModel {
     this.email,
     this.uId,
     this.isAdmin,
-    this.name,
+
     this.password,
     this.personImg,
     this.username,
@@ -24,7 +24,7 @@ class UserModel {
     email = json['email'];
     uId = json['uId'];
     isAdmin = json['isAdmin'];
-    name = json['name'];
+
     password = json['password'];
     personImg = json['personImg'];
     username = json['username'];
@@ -36,7 +36,6 @@ class UserModel {
       'email': email,
       'uId': uId,
       'isAdmin': isAdmin,
-      'name': name,
       'password': password,
       'personImg': personImg,
       'username': username,
