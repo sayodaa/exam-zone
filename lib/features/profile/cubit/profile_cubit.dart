@@ -16,6 +16,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     email: '',
     uId: '',
     personImg: '',
+    isAdmin: true,
     password: '',
   );
 
@@ -65,6 +66,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       email: userModel.email,
       password: userModel.password,
       uId: userModel.uId,
+      isAdmin: userModel.isAdmin,
     );
 
     FirebaseFirestore.instance

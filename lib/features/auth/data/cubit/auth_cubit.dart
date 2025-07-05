@@ -20,7 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
         .then((value) {
           log(value.user!.email.toString());
           log(value.user!.uid.toString());
-         
+
           emit(LoginSuccess(value.user!.uid));
         })
         .catchError((error) {
@@ -44,6 +44,7 @@ class AuthCubit extends Cubit<AuthState> {
             email: email,
             password: password,
             username: username,
+
             uId: value.user!.uid,
           );
 
@@ -68,6 +69,7 @@ class AuthCubit extends Cubit<AuthState> {
           'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?t=st=1731808878~exp=1731812478~hmac=afd6c0164d6c143e908928d3d3b78ab0d481e3450013804a2de6057e50529644&w=740',
 
       password: password,
+      isAdmin: true,
       uId: uId,
     );
 
