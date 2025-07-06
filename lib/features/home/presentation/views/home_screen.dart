@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomAppBar(text: AppLocalizations.of(context)!.translate(LangKeys.appName)!),
-                    SizedBox(height: AppColorsStyles.defaultPadding.h * 0.75), // Approx 12.h
+                    SizedBox(height: AppColorsStyles.defaultPadding.h * 2), // Approx 12.h
                     LayoutBuilder(
                       builder: (context, constraints) {
                         return GridView.count(

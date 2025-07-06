@@ -5,7 +5,10 @@ import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
-import 'package:graduation/features/overwall/presentation/views/generate_quation.dart';
+import 'package:graduation/features/overwall/presentation/widgets/add_quation.dart';
+import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
+import 'package:graduation/features/overwall/presentation/widgets/input_field.dart';
+import 'package:graduation/features/overwall/presentation/widgets/quation_tile.dart';
 
 class CreateExamScreen extends StatefulWidget {
   const CreateExamScreen({super.key});
@@ -46,25 +49,31 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
             BuildInputField(
               label: context.translate(LangKeys.examTitle),
               controller: _titleController,
-              hint: context.translate(LangKeys.enterExamTitle),
             ),
             SizedBox(height: 12.h),
             BuildInputField(
               label: context.translate(LangKeys.selectSubject),
               controller: _subjectController,
-              hint: context.translate(LangKeys.selectSubject),
             ),
             SizedBox(height: 12.h),
             BuildInputField(
               label: context.translate(LangKeys.level),
               controller: _levelController,
-              hint: context.translate(LangKeys.selectLevel),
             ),
             SizedBox(height: 12.h),
             BuildInputField(
               label: context.translate(LangKeys.durationMinutes),
               controller: _durationController,
-              hint: context.translate(LangKeys.enterDuration),
+              keyboardType: TextInputType.number,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return context.translate(LangKeys.enterDuration);
+                }
+                if (int.tryParse(value) == null || int.parse(value) <= 0) {
+                  return context.translate(LangKeys.enterDuration);
+                }
+                return null;
+              },
             ),
             SizedBox(height: 20.h),
             TextApp(
@@ -110,152 +119,6 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class BuildInputField extends StatelessWidget {
-  const BuildInputField({
-    super.key,
-    required this.label,
-    required this.controller,
-    required this.hint,
-  });
-
-  final String label;
-  final TextEditingController controller;
-  final String hint;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextApp(
-          text: label,
-          style: AppTextStyles.body14(context),
-        ),
-        SizedBox(height: 4.h),
-        Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppColorsStyles.defaultPadding.w,
-            vertical: AppColorsStyles.defaultPadding.h,
-          ),
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardTheme.color,
-            borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
-          ),
-          child: TextField(
-            controller: controller,
-            style: AppTextStyles.body14(context),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: hint,
-              hintStyle: AppTextStyles.mutedBody14(context),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class BuildAddQuestionButton extends StatelessWidget {
-  const BuildAddQuestionButton({
-    super.key,
-    required this.onTap,
-  });
-
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12.h),
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardTheme.color,
-          borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
-        ),
-        child: Center(
-          child: TextApp(
-            text: '+${context.translate(LangKeys.addQuestion)}',
-            style: AppTextStyles.mutedBody14(context),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class BuildQuestionTile extends StatelessWidget {
-  const BuildQuestionTile({
-    super.key,
-    required this.question,
-    required this.isMultipleChoice,
-  });
-
-  final Map<String, dynamic> question;
-  final bool isMultipleChoice;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
-      child: Container(
-        padding: EdgeInsets.all(AppColorsStyles.defaultPadding.w),
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardTheme.color,
-          borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextApp(
-              text: isMultipleChoice ? context.translate(LangKeys.multipleChoice) : context.translate(LangKeys.essay),
-              style: AppTextStyles.caption12(context),
-            ),
-            SizedBox(height: 8.h),
-            TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: context.translate(LangKeys.enterExamTitle),
-                hintStyle: AppTextStyles.mutedBody14(context),
-              ),
-              style: AppTextStyles.body14(context),
-              maxLines: null,
-            ),
-            if (isMultipleChoice)
-              Column(
-                children: List.generate(4, (index) {
-                  return Padding(
-                    padding: EdgeInsets.only(top: 8.h),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: '${context.translate(LangKeys.option1)} ${index + 1}',
-                              hintStyle: AppTextStyles.mutedBody14(context),
-                            ),
-                            style: AppTextStyles.body14(context),
-                          ),
-                        ),
-                        Checkbox(
-                          value: false,
-                          onChanged: (value) {},
-                          activeColor: Theme.of(context).colorScheme.secondary,
-                        ),
-                      ],
-                    ),
-                  );
-                }),
-              ),
           ],
         ),
       ),

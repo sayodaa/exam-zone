@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/features/overwall/presentation/views/generate_quation.dart';
+import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
 
 class ExamResultsScreen extends StatelessWidget {
   const ExamResultsScreen({super.key});

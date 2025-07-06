@@ -7,6 +7,8 @@ import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
+import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
+import 'package:graduation/features/overwall/presentation/widgets/input_field.dart';
 
 class GenerateExamScreen extends StatefulWidget {
   const GenerateExamScreen({super.key});
@@ -183,77 +185,4 @@ class _GenerateExamScreenState extends State<GenerateExamScreen> {
       ),
     );
   }
-}
-
-class BuildInputField extends StatelessWidget {
-  const BuildInputField({
-    super.key,
-    required this.label,
-    this.controller,
-    this.validator,
-    this.keyboardType,
-  });
-
-  final String? label;
-  final TextEditingController? controller;
-  final String? Function(String?)? validator;
-  final TextInputType? keyboardType;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
-        border: Border.all(color: Theme.of(context).dividerColor),
-      ),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: keyboardType,
-        validator: validator,
-        style: AppTextStyles.body16(context),
-        decoration: InputDecoration(
-          hintText: label,
-          hintStyle: AppTextStyles.mutedBody16(context),
-          contentPadding: EdgeInsets.symmetric(
-            vertical: AppColorsStyles.defaultPadding.h,
-            horizontal: AppColorsStyles.defaultPadding.w,
-          ),
-          border: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-        ),
-      ),
-    );
-  }
-}
-
-class CustomAppBarForExams extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBarForExams({
-    super.key,
-    required this.text,
-    this.icon,
-  });
-
-  final String text;
-  final IconData? icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: TextApp(
-        text: text,
-        style: AppTextStyles.semiBold20(context),
-      ),
-      leading: IconButton(
-        icon: Icon(icon, color: Theme.of(context).appBarTheme.foregroundColor),
-        onPressed: () => Navigator.pop(context),
-      ),
-      backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      elevation: 0,
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(56.h);
 }

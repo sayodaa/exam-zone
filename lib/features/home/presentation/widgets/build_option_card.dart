@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/styles/app_images.dart';
-import 'package:graduation/core/styles/styles.dart';
+import 'package:graduation/core/styles/app_text_styles.dart';
 
 class BuildOptionCard extends StatelessWidget {
   const BuildOptionCard({
@@ -23,9 +24,8 @@ class BuildOptionCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(12.w), // Reduced padding for smaller screens
         decoration: BoxDecoration(
-          color: AppColorsStyles.light.accentColor, // Slightly transparent background
+          color: Theme.of(context).cardTheme.color,// Slightly transparent background
           borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: Colors.white10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,32 +36,22 @@ class BuildOptionCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    title??'',
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                  TextApp(
+                    text:title??'',
+                    style: AppTextStyles.semiBold20(context),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
                   SizedBox(height: 4.h),
                   LayoutBuilder(
                     builder: (context, constraints) {
-                      return Text(
-                        subtitle??'',
-                        style: TextStyle(
-                          fontSize: ScreenUtil().screenWidth < 360
-                              ? 12.sp
-                              : 13.sp, // Smaller font for narrow screens
-                          color: Colors.white70,
-                        ),
+                      return TextApp(
+                        text: subtitle??'',
+                        style: AppTextStyles.body12(context),
                         maxLines: ScreenUtil().screenHeight < 600
                             ? 2
                             : 3, // Adjust max lines based on screen height
                         overflow: TextOverflow.ellipsis,
-                        softWrap: true,
                       );
                     },
                   ),

@@ -5,11 +5,13 @@ import 'package:graduation/core/styles/app_text_styles.dart';
 class CustomAppBarForExams extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBarForExams({
     super.key,
-    required this.text, this.icon,
+    required this.text,
+    this.icon,
+    this.onPressed,
   });
   final String text;
   final IconData? icon;
-
+  final VoidCallback? onPressed;
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -18,7 +20,7 @@ class CustomAppBarForExams extends StatelessWidget implements PreferredSizeWidge
     return AppBar(
       leading: IconButton(
         icon: Icon(icon ?? Icons.arrow_back, color:Theme.of(context).textTheme.bodyMedium?.color),
-        onPressed: () => Navigator.pop(context),
+        onPressed: onPressed ?? () => Navigator.pop(context),
       ),
       title: TextApp(
         text:  text,

@@ -13,7 +13,7 @@ extension ContextExt on BuildContext {
   // TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
 
   // //Language
-  String translate(String langkey) {
+  String translate(String langkey,) {
     return AppLocalizations.of(this)!.translate(langkey).toString();
   }
 

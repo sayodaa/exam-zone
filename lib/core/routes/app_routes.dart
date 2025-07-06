@@ -76,7 +76,7 @@ class AppRoutes {
         );
         case generateQuestion:
         return BaseRoute(
-          page: const GenerateExamScreen(),
+          page: GenerateExamScreen(),
         );
       case createExam:
         return BaseRoute(
