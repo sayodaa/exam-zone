@@ -44,13 +44,13 @@ class LoginScreen extends StatelessWidget {
             }
           }
           if (state is LoginSuccess) {
-            Future.delayed(const Duration(seconds: 2), () {
+            Future.delayed(const Duration(seconds: 1), () {
               SharedPref().setString(PrefKeys.uId, state.uId).then((value) {
                 if (context.mounted) {
-                  context.pushNamedAndRemoveUntil(AppRoutes.settingsView);
+                  context.pushName(AppRoutes.mainV);
+                  ShowToast.showToastSuccessTop(message: 'Login successful');
                 }
               });
-              ShowToast.showToastSuccessTop(message: 'Login successful');
             });
           }
         },
@@ -92,7 +92,9 @@ class LoginScreen extends StatelessWidget {
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             validator: (value) {
-                              if (!AppRegex.isEmailValid(
+                              if (value == null) {
+                                return "Please enter your email";
+                              } else if (!AppRegex.isEmailValid(
                                 emailController.text,
                               )) {
                                 return "Please enter a valid email";
@@ -181,10 +183,10 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: AppColorsStyles.defaultPadding.h * 0.625,
                         ), // Approx 10.h
-                        state is! LoginLoading
-                            ? CustomFadeInUp(
-                                duration: 700,
-                                child: AuthButton(
+                        CustomFadeInUp(
+                          duration: 700,
+                          child: state is! LoginLoading
+                              ? AuthButton(
                                   text: context.translate(LangKeys.login),
                                   onPressed: () {
                                     if (formKey.currentState!.validate()) {
@@ -192,15 +194,14 @@ class LoginScreen extends StatelessWidget {
                                         email: emailController.text,
                                         password: passwordController.text,
                                       );
-                                      context
-                                          .pushNamedAndRemoveUntil(
-                                        AppRoutes.mainV,
-                                      );
                                     }
                                   },
+                                )
+                              : const Center(
+                                  child: CircularProgressIndicator(),
                                 ),
-                              )
-                            : const Center(child: CircularProgressIndicator()),
+                        ),
+
                         SizedBox(
                           height: AppColorsStyles.defaultPadding.h * 1.25,
                         ), // Approx 20.h

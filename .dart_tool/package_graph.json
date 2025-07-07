@@ -10,6 +10,7 @@
         "animate_do",
         "animated_bottom_navigation_bar",
         "animated_splash_screen",
+        "cloud_firestore",
         "connectivity_plus",
         "cupertino_icons",
         "dio",
@@ -23,7 +24,6 @@
         "flutter_svg",
         "fluttertoast",
         "freezed_annotation",
-        "http",
         "provider",
         "shared_preferences",
         "smooth_page_indicator"
@@ -95,16 +95,6 @@
         "collection",
         "flutter",
         "nested"
-      ]
-    },
-    {
-      "name": "http",
-      "version": "1.4.0",
-      "dependencies": [
-        "async",
-        "http_parser",
-        "meta",
-        "web"
       ]
     },
     {
@@ -242,6 +232,19 @@
         "meta",
         "nm",
         "web"
+      ]
+    },
+    {
+      "name": "cloud_firestore",
+      "version": "5.6.11",
+      "dependencies": [
+        "cloud_firestore_platform_interface",
+        "cloud_firestore_web",
+        "collection",
+        "firebase_core",
+        "firebase_core_platform_interface",
+        "flutter",
+        "meta"
       ]
     },
     {
@@ -495,21 +498,6 @@
       ]
     },
     {
-      "name": "web",
-      "version": "1.1.1",
-      "dependencies": []
-    },
-    {
-      "name": "http_parser",
-      "version": "4.1.2",
-      "dependencies": [
-        "collection",
-        "source_span",
-        "string_scanner",
-        "typed_data"
-      ]
-    },
-    {
       "name": "json_annotation",
       "version": "4.9.0",
       "dependencies": [
@@ -686,6 +674,31 @@
       ]
     },
     {
+      "name": "cloud_firestore_web",
+      "version": "4.4.11",
+      "dependencies": [
+        "_flutterfire_internals",
+        "cloud_firestore_platform_interface",
+        "collection",
+        "firebase_core",
+        "firebase_core_web",
+        "flutter",
+        "flutter_web_plugins"
+      ]
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "version": "6.6.11",
+      "dependencies": [
+        "_flutterfire_internals",
+        "collection",
+        "firebase_core",
+        "flutter",
+        "meta",
+        "plugin_platform_interface"
+      ]
+    },
+    {
       "name": "page_transition",
       "version": "2.2.1",
       "dependencies": [
@@ -735,13 +748,6 @@
         "path",
         "path_provider_platform_interface",
         "xdg_directories"
-      ]
-    },
-    {
-      "name": "typed_data",
-      "version": "1.4.0",
-      "dependencies": [
-        "collection"
       ]
     },
     {

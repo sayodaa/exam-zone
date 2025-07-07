@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/language/app_localizations_setup.dart';
 import 'package:graduation/core/routes/app_routes.dart';
+import 'package:graduation/core/services/shared_pref/pref_keys.dart';
+import 'package:graduation/core/services/shared_pref/shared_pref.dart';
 import 'package:graduation/core/styles/theme/app_themes_styles.dart';
 import 'package:graduation/core/styles/theme/theme_provider.dart';
-import 'package:graduation/features/overwall/presentation/cubit/generate_cubit.dart';
+import 'package:graduation/core/utils/app_string.dart';
 import 'package:provider/provider.dart';
 
 class ExamZone extends StatelessWidget {
@@ -32,27 +33,26 @@ class ExamZoneApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
+        SharedPref().getBoolean(PrefKeys.onBoarding);
+        uId = SharedPref().getString(PrefKeys.uId);
         return GestureDetector(
           onTap: () {
             // إلغاء تركيز لوحة المفاتيح عند النقر خارج الحقول
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: BlocProvider(
-            create: (context) => GenerateExamCubit(),
-            child: MaterialApp(
-              locale: themeProvider.currentLocale, // ✅ اللغة حسب ThemeProvider
-              localizationsDelegates:
-                  AppLocalizationsSetup.localizationsDelegates,
-              supportedLocales: AppLocalizationsSetup.supportedLocales,
-              localeResolutionCallback:
-                  AppLocalizationsSetup.localeResolutionCallback,
-              debugShowCheckedModeBanner: false,
-              theme: AppThemes.lightTheme,
-              darkTheme: AppThemes.darkTheme,
-              themeMode: themeProvider.themeMode,
-              initialRoute: AppRoutes.splash,
-              onGenerateRoute: AppRoutes.onGenerateRoute,
-            ),
+          child: MaterialApp(
+            locale: themeProvider.currentLocale, // ✅ اللغة حسب ThemeProvider
+            localizationsDelegates:
+                AppLocalizationsSetup.localizationsDelegates,
+            supportedLocales: AppLocalizationsSetup.supportedLocales,
+            localeResolutionCallback:
+                AppLocalizationsSetup.localeResolutionCallback,
+            debugShowCheckedModeBanner: false,
+            theme: AppThemes.lightTheme,
+            darkTheme: AppThemes.darkTheme,
+            themeMode: themeProvider.themeMode,
+            initialRoute: AppRoutes.splash,
+            onGenerateRoute: AppRoutes.onGenerateRoute,
           ),
         );
       },

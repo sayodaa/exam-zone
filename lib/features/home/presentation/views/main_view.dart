@@ -107,7 +107,7 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
         color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 8.r,
             offset: Offset(0, -2.h),
           ),
@@ -137,7 +137,7 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
             decoration: BoxDecoration(
-              color: isSelected ? item.color.withOpacity(0.1) : Colors.transparent,
+              color: isSelected ? item.color.withValues(alpha: 0.1) : Colors.transparent,
               borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
             ),
             child: Row(
@@ -152,7 +152,7 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
                         height: 40.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: item.color.withOpacity(0.2),
+                          color: item.color.withValues(alpha: 0.2),
                         ),
                       ),
                     Transform.scale(

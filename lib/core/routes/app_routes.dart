@@ -30,22 +30,15 @@ class AppRoutes {
   static const String createExam = '/createExam';
   static const String mainV = '/mainV';
   static Route<void> onGenerateRoute(RouteSettings settings) {
-    
     switch (settings.name) {
       case onBoarding:
         return BaseRoute(page: const OnBoardingScreen());
       case splash:
-        return BaseRoute(
-          page: const SplashView(),
-        );
-        case mainV:
-        return BaseRoute(
-          page: const MainView(),
-        );
-        case profile:
-        return BaseRoute(
-          page: const ProfileScreen(),
-        );
+        return BaseRoute(page: const SplashView());
+      case mainV:
+        return BaseRoute(page: const MainView());
+      case profile:
+        return BaseRoute(page: const ProfileScreen());
       case login:
         return BaseRoute(
           page:  LoginScreen(),
@@ -76,12 +69,10 @@ class AppRoutes {
         );
         case generateQuestion:
         return BaseRoute(
-          page: GenerateExamScreen(),
+          page: const GenerateExamScreen(),
         );
       case createExam:
-        return BaseRoute(
-          page: const CreateExamScreen(),
-        );
+        return BaseRoute(page: const CreateExamScreen());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

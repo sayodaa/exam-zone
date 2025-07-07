@@ -1,9 +1,9 @@
 class UserModel {
   num? data;
   String? email;
-  num? id;
+  String? uId;
   bool? isAdmin;
-  String? name;
+
   String? password;
   String? personImg;
   String? username;
@@ -11,9 +11,9 @@ class UserModel {
   UserModel({
     this.data,
     this.email,
-    this.id,
+    this.uId,
     this.isAdmin,
-    this.name,
+
     this.password,
     this.personImg,
     this.username,
@@ -22,9 +22,9 @@ class UserModel {
   UserModel.fromJson(Map<String, dynamic> json) {
     data = json['data'];
     email = json['email'];
-    id = json['id'];
+    uId = json['uId'];
     isAdmin = json['isAdmin'];
-    name = json['name'];
+
     password = json['password'];
     personImg = json['personImg'];
     username = json['username'];
@@ -34,9 +34,8 @@ class UserModel {
     return {
       'data': data,
       'email': email,
-      'id': id,
+      'uId': uId,
       'isAdmin': isAdmin,
-      'name': name,
       'password': password,
       'personImg': personImg,
       'username': username,
