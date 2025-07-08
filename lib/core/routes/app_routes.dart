@@ -6,7 +6,8 @@ import 'package:graduation/features/auth/presentation/screens/signup_screen.dart
 import 'package:graduation/features/home/presentation/views/home_screen.dart';
 import 'package:graduation/features/home/presentation/views/main_view.dart';
 import 'package:graduation/features/onboarding/onboard_view.dart';
-import 'package:graduation/features/overwall/presentation/views/add_quation.dart';
+import 'package:graduation/features/overwall/data/quation_model.dart';
+import 'package:graduation/features/overwall/presentation/views/exam_screen.dart';
 import 'package:graduation/features/overwall/presentation/views/create_exam.dart';
 import 'package:graduation/features/overwall/presentation/views/exam_result2.dart';
 import 'package:graduation/features/overwall/presentation/views/generate_quation.dart';
@@ -25,10 +26,12 @@ class AppRoutes {
   static const String settingsView = '/settings';
   static const String overWall = 'overWall';
   static const String examResultsStudentsScreen = '/examResultsStudentsScreen';
-  static const String addQuestion = '/addQuestion';
+  static const String examScreen = '/examScreen';
   static const String generateQuestion = '/generateQuestion';
   static const String createExam = '/createExam';
   static const String mainV = '/mainV';
+  static const String examResult2 = '/examResult2';
+  static const String examResultStudentsScreen = '/examResultStudentsScreen';
   static Route<void> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case onBoarding:
@@ -45,7 +48,7 @@ class AppRoutes {
         );
         case signUp:
         return BaseRoute(
-          page: const SignupScreen(),
+          page: SignupScreen(),
         );
         case home:
         return BaseRoute(
@@ -63,9 +66,11 @@ class AppRoutes {
         return BaseRoute(
           page: const ExamResultsStudentsScreen(),
         );
-        case addQuestion:
+        case examScreen:
         return BaseRoute(
-          page: const AddQuestionsScreen(),
+          page: ExamScreen(
+            generatedQuestions: settings.arguments as List<QuestionModel>?,
+          ),
         );
         case generateQuestion:
         return BaseRoute(

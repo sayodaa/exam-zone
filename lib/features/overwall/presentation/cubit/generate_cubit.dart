@@ -20,11 +20,15 @@ class GenerateExamCubit extends Cubit<GenerateExamState> {
       emit(GeneratingExamInProgress(0));
 
       for (int i = 0; i <= 100; i += 10) {
-        await Future.delayed(const Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 2000));
         emit(GeneratingExamInProgress(i / 100));
       }
 
-      final questionModels = await generateQuiz(numberOfQuestions, subject, difficultyValue);
+      final questionModels = await generateQuiz(
+        numQuestions: numberOfQuestions,
+        subject: subject,
+        difficulty: difficultyValue,
+      );
 
       emit(GenerateExamSuccess(questionModels));
     } catch (e) {

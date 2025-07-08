@@ -53,6 +53,8 @@ class LangKeys {
   static const String generate = 'generate';
   static const String generatingExam = 'generatingExam';
   static const String mayTakeSeconds = 'mayTakeSeconds';
+  static const String percentage = 'percentage';
+  static const String submitExam = 'submitExam';
 
   // Exam Results related keys
   static const String examResults = 'examResults';
@@ -86,6 +88,7 @@ class LangKeys {
   static const String createAiExamSubtitle = 'createAiExamSubtitle';
   static const String createManualExamSubtitle = 'createManualExamSubtitle';
   static const String myExams = 'myExams';
+  static const String questionsGenerated = 'questionsGenerated';
   static const String myExamsSubtitle = 'myExamsSubtitle';
   static const String examTitle = 'examTitle';
   static const String enterExamTitle = 'enterExamTitle';
@@ -118,5 +121,19 @@ class LangKeys {
   static const String searchExams = 'searchExams';
   static const String filterBySubject = 'filterBySubject';
   static const String filterByDifficulty = 'filterByDifficulty';
+
+  // newest
   static const String clearFilters = 'clearFilters';
+  static const String noResultsFound = 'noResultsFound';
+  static const String examQuestions = 'examQuestions';
+  static const String addQuestionToExam = 'addQuestionToExam';
+  static const String questionType = 'questionType';
+  static const String multipleChoiceQuestions = 'multipleChoiceQuestions';
+  static const String correctAnswer = 'correctAnswer';
+  static const String questionOptions = 'questionOptions';
+  static const String addOption = 'addOption';
+  static const String questionDifficulty = 'questionDifficulty';
+  static const String questionTypeMultipleChoice = 'questionTypeMultipleChoice';
+  static const String questionTypeEssay = 'questionTypeEssay';
+
 }
