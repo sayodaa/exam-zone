@@ -17,4 +17,9 @@ class GetProfileImageSuccess extends ProfileState {}
 
 class GetProfileImageFailure extends ProfileState {}
 
-class UpdateUserFailure extends ProfileState {}
+class UpdateUserSuccess extends ProfileState {}
+
+class UpdateUserFailure extends ProfileState {
+  final String message;
+  UpdateUserFailure(this.message);
+}

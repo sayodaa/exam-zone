@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/core/utils/app_string.dart';
@@ -13,18 +12,22 @@ class ProfileCubit extends Cubit<ProfileState> {
   static ProfileCubit get(context) => BlocProvider.of(context);
   UserModel userModel = UserModel(
     username: '',
-    email: '',
-    uId: '',
     personImg: '',
-    isAdmin: true,
+    email: '',
     password: '',
+    uId: '',
+    isAdmin: false,
+    phoneNumber: '',
+    aboutMe: '',
+    examCreated: '',
+    dateJoin: '',
   );
 
-  void getUserData() {
+  Future<void> getUserData() async {
     emit(GetUserLoading());
     FirebaseFirestore.instance
-        .collection('users')
-        .doc(uId)
+        .collection('accounts')
+        .doc(AppString.uId)
         .get()
         .then((value) {
           log('${value.data()}getUserData  ');
@@ -50,7 +53,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       profileImage = File(pickedFile.path);
-
       log(profileImage?.path ?? 'null profile image path');
       emit(GetProfileImageSuccess());
     } else {
@@ -59,10 +61,15 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  void updateUserData({String? name, String? image}) {
+  Future<void> updateUserData({String? name, String? image}) async {
     UserModel model = UserModel(
       username: name ?? userModel.username,
       personImg: image ?? userModel.personImg,
+
+      phoneNumber: userModel.phoneNumber,
+      aboutMe: userModel.aboutMe,
+      examCreated: userModel.examCreated,
+      dateJoin: userModel.dateJoin,
       email: userModel.email,
       password: userModel.password,
       uId: userModel.uId,
@@ -70,14 +77,17 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
 
     FirebaseFirestore.instance
-        .collection('users')
-        .doc(userModel.uId)
+        .collection('accounts')
+        .doc(AppString.uId)
         .update(model.toMap())
         .then((value) {
           getUserData();
+          log('User updated successfully');
+          emit(UpdateUserSuccess());
         })
         .catchError((error) {
-          emit(UpdateUserFailure());
+          log('Error updating user: $error');
+          emit(UpdateUserFailure(error.toString()));
         });
   }
 }

@@ -27,6 +27,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       }
     });
   }
+
   List<OnboardingItem> get onboardingDark => [
     OnboardingItem(
       image: AppImages.onBoard1Dark,
@@ -93,13 +94,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             SmoothPageIndicator(
               controller: _controller,
               count: onboardingDark.length,
-              effect: WormEffect(
+
+              onDotClicked: (index) {
+                _controller.animateToPage(
+                  index,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.bounceInOut,
+                );
+              },
+              effect: JumpingDotEffect(
                 dotColor: Colors.grey,
                 activeDotColor: Colors.blue,
                 dotHeight: 10,
                 dotWidth: 10,
                 spacing: 5,
-                type: WormType.thin,
               ),
             ),
             const SizedBox(height: 10),

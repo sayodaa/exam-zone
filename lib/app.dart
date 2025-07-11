@@ -38,8 +38,8 @@ class ExamZoneApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        SharedPref().getBoolean(PrefKeys.onBoarding);
-        uId = SharedPref().getString(PrefKeys.uId);
+        bool? onboard = SharedPref().getBoolean(PrefKeys.onBoarding);
+        AppString.uId = SharedPref().getString(PrefKeys.uId);
         return GestureDetector(
           onTap: () {
             // إلغاء تركيز لوحة المفاتيح عند النقر خارج الحقول
@@ -56,7 +56,11 @@ class ExamZoneApp extends StatelessWidget {
             theme: AppThemes.lightTheme,
             darkTheme: AppThemes.darkTheme,
             themeMode: themeProvider.themeMode,
-            initialRoute: AppRoutes.mainV,
+            initialRoute: AppString.uId != null
+                ? AppRoutes.mainV
+                : onboard != null
+                ? AppRoutes.login
+                : AppRoutes.splash,
             onGenerateRoute: AppRoutes.onGenerateRoute,
           ),
         );

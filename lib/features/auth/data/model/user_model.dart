@@ -1,18 +1,23 @@
 class UserModel {
-  num? data;
   String? email;
   String? uId;
   bool? isAdmin;
-
+  String? phoneNumber;
+  String? aboutMe;
+  String? examCreated;
+  String? dateJoin;
   String? password;
   String? personImg;
   String? username;
 
   UserModel({
-    this.data,
     this.email,
     this.uId,
     this.isAdmin,
+    this.phoneNumber,
+    this.aboutMe,
+    this.examCreated,
+    this.dateJoin,
 
     this.password,
     this.personImg,
@@ -20,10 +25,13 @@ class UserModel {
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'];
     email = json['email'];
     uId = json['uId'];
     isAdmin = json['isAdmin'];
+    phoneNumber = json['phoneNumber'];
+    aboutMe = json['aboutMe'];
+    examCreated = json['examCreated'];
+    dateJoin = json['dateJoin'];
 
     password = json['password'];
     personImg = json['personImg'];
@@ -32,10 +40,13 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'data': data,
       'email': email,
       'uId': uId,
       'isAdmin': isAdmin,
+      'phoneNumber': phoneNumber,
+      'aboutMe': aboutMe,
+      'examCreated': examCreated,
+      'dateJoin': dateJoin,
       'password': password,
       'personImg': personImg,
       'username': username,
