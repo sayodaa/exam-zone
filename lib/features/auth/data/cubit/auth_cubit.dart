@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   static AuthCubit get(context) => BlocProvider.of(context);
+
 
   void login({required String email, required String password}) {
     emit(LoginLoading());
@@ -42,7 +42,6 @@ class AuthCubit extends Cubit<AuthState> {
             email: email,
             password: password,
             username: username,
-
             uId: value.user!.uid,
           );
 
@@ -68,7 +67,7 @@ class AuthCubit extends Cubit<AuthState> {
 
       password: password,
       isAdmin: true,
-      uId: uId,
+      uId: uId,       
     );
 
     FirebaseFirestore.instance

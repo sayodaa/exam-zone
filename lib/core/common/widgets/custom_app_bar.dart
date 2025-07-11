@@ -22,9 +22,12 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextApp(text: text, style: AppTextStyles.bold24(context)),
+
           Icon(
             icon,
-            color: Theme.of(context).iconTheme.color ?? Theme.of(context).textTheme.bodyLarge?.color,
+            color:
+                Theme.of(context).iconTheme.color ??
+                Theme.of(context).textTheme.bodyLarge?.color,
             size: 24.sp,
           ),
         ],

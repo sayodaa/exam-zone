@@ -1,2 +1,6 @@
 const String errorMessage = 'Please, try agian we have error';
-String? uId;
+
+
+class AppString {
+  static String? uId;
+}

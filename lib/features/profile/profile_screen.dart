@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                         duration: 700,
                         child: Center(
                           child: TextApp(
-                            text: 'John Doe',
+                            text: userModel.username ?? 'john doe',
                             style: AppTextStyles.bold24(context),
                           ),
                         ),
@@ -69,11 +69,29 @@ class ProfileScreen extends StatelessWidget {
                         duration: 800,
                         child: Center(
                           child: TextApp(
-                            text: 'john.doe@example.com',
+                            text: userModel.email ?? 'john.doe@example.com',
                             style: AppTextStyles.body16(context).copyWith(
-                              color: Theme.of(
-                                context,
-                              ).textTheme.bodyMedium?.color?.withOpacity(0.7),
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.color
+                                  ?.withValues(alpha: 0.7),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: AppColorsStyles.defaultPadding.h * 0.5),
+                      CustomFadeInUp(
+                        duration: 800,
+                        child: Center(
+                          child: TextApp(
+                            text: userModel.phoneNumber ?? '0123456789',
+                            style: AppTextStyles.body16(context).copyWith(
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.color
+                                  ?.withValues(alpha: 0.7),
                             ),
                           ),
                         ),
@@ -108,14 +126,16 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 TextApp(
                                   text:
-                                      'Passionate educator creating engaging exams to help students excel.',
+                                      userModel.aboutMe ??
+                                      "Let others know a little more about you.",
                                   style: AppTextStyles.body16(context),
                                 ),
                                 SizedBox(
                                   height: AppColorsStyles.defaultPadding.h,
                                 ),
                                 TextApp(
-                                  text: 'Exams Created: 12',
+                                  text:
+                                      'Exams Created: ${userModel.examCreated ?? '0'}',
                                   style: AppTextStyles.body16(context),
                                 ),
                                 SizedBox(
@@ -123,7 +143,8 @@ class ProfileScreen extends StatelessWidget {
                                       AppColorsStyles.defaultPadding.h * 0.5,
                                 ),
                                 TextApp(
-                                  text: 'Joined: January 2025',
+                                  text:
+                                      'Joined: ${userModel.dateJoin ?? "January 2025"}',
                                   style: AppTextStyles.body16(context),
                                 ),
                               ],
@@ -162,7 +183,10 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                                 ),
                             onPressed: () {
-                              Navigator.pushNamed(context, AppRoutes.profile);
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.editProfile,
+                              );
                             },
                             child: TextApp(
                               text: 'Edit Profile',
