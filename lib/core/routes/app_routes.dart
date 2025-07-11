@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/common/under_build_screen.dart';
 import 'package:graduation/core/routes/base_routes.dart';
+import 'package:graduation/features/EssayAI/presentation/views/essay_ai.dart';
 import 'package:graduation/features/auth/presentation/screens/login_screen.dart';
 import 'package:graduation/features/auth/presentation/screens/signup_screen.dart';
 import 'package:graduation/features/home/presentation/views/home_screen.dart';
@@ -32,6 +33,8 @@ class AppRoutes {
   static const String mainV = '/mainV';
   static const String examResult2 = '/examResult2';
   static const String examResultStudentsScreen = '/examResultStudentsScreen';
+  static const String essayAi = '/essayAi';
+
   static Route<void> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case onBoarding:
@@ -75,6 +78,10 @@ class AppRoutes {
         case generateQuestion:
         return BaseRoute(
           page: const GenerateExamScreen(),
+        );
+        case essayAi:
+        return BaseRoute(
+          page: const EssayAiView(),
         );
       case createExam:
         return BaseRoute(page: const CreateExamScreen());

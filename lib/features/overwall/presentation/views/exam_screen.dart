@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/core/common/pdf.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
@@ -55,29 +56,29 @@ class _ExamScreenState extends State<ExamScreen> {
     }
   }
 
-  // Future<String?> _getFileNameFromUser(BuildContext context) async {
-  //   final controller = TextEditingController();
-  //   return await showDialog<String>(
-  //     context: context,
-  //     builder: (context) => AlertDialog(
-  //       title: Text('اسم الملف'),
-  //       content: TextField(
-  //         controller: controller,
-  //         decoration: InputDecoration(hintText: "مثلاً: exam_result"),
-  //       ),
-  //       actions: [
-  //         TextButton(
-  //           child: Text('إلغاء'),
-  //           onPressed: () => Navigator.of(context).pop(),
-  //         ),
-  //         TextButton(
-  //           child: Text('حفظ'),
-  //           onPressed: () => Navigator.of(context).pop(controller.text),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+  Future<String?> _getFileNameFromUser(BuildContext context) async {
+    final controller = TextEditingController();
+    return await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('اسم الملف'),
+        content: TextField(
+          controller: controller,
+          decoration: InputDecoration(hintText: "مثلاً: exam_result"),
+        ),
+        actions: [
+          TextButton(
+            child: Text('إلغاء'),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          TextButton(
+            child: Text('حفظ'),
+            onPressed: () => Navigator.of(context).pop(controller.text),
+          ),
+        ],
+      ),
+    );
+  }
 
   void _submitExam() {
     int totalCorrect = 0;
@@ -95,22 +96,22 @@ class _ExamScreenState extends State<ExamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () async {
-      //     final fileName = await _getFileNameFromUser(context);
-      //     if (fileName != null && fileName.trim().isNotEmpty) {
-      //       await exportExamAsTextPdf(
-      //         context: context,
-      //         mcqQuestions: multipleChoiceQuestions,
-      //         essayQuestions: essayQuestions,
-      //         userAnswers: userAnswers,
-      //         score: score,
-      //         fileName: fileName.trim(),
-      //       );
-      //     }
-      //   },
-      //   child: Icon(Icons.picture_as_pdf),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final fileName = await _getFileNameFromUser(context);
+          if (fileName != null && fileName.trim().isNotEmpty) {
+            await exportExamAsTextPdf(
+              context: context,
+              mcqQuestions: multipleChoiceQuestions,
+              essayQuestions: essayQuestions,
+              userAnswers: userAnswers,
+              score: score,
+              // fileName: fileName.trim(),
+            );
+          }
+        },
+        child: Icon(Icons.picture_as_pdf),
+      ),
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(

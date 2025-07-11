@@ -63,7 +63,7 @@ dont add backticks in respone
 
     // 4. Convert the list of dynamic objects into a list of Question objects.
     final List<QuestionModel> questions = decodedJson
-        .map((item) => QuestionModel.fromJson(item as Map<String, dynamic>))
+        .map((item) => QuestionModel.fromJson(item as Map<String, dynamic>, 'en'))
         .toList();
 
     return questions;

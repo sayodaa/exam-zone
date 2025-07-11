@@ -37,6 +37,8 @@
   "percentage": "Percentage",
   "submitExam": "Submit Exam",
   "multipleChoiceQuestions": "Multiple Choice Questions",
+  "errorAnswerNotExist": "Error: Answer does not exist for this question",
+  "errorQuestionEmpty": "Error: Question cannot be empty",
   "selectSubject": "Select Subject",
   "numberOfQuestions": "Number of Questions",
   "difficultyLevel": "Difficulty Level",

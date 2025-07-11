@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                           childAspectRatio: orientation == Orientation.portrait ? 3.5 : 2.5,
                           children: [
                             CustomFadeInDown(
-                              duration: 700,
+                              duration: 300,
                               child: BuildOptionCard(
                                 title: AppLocalizations.of(context)!.translate(LangKeys.createAiExam),
                                 subtitle: AppLocalizations.of(context)!.translate(LangKeys.createAiExamSubtitle),
@@ -50,8 +50,19 @@ class HomeScreen extends StatelessWidget {
                                 },
                               ),
                             ),
-                            CustomFadeInUp(
-                              duration: 700,
+                            CustomFadeInLeft(
+                              duration: 400,
+                              child: BuildOptionCard(
+                                title: AppLocalizations.of(context)!.translate(LangKeys.essay),
+                                subtitle: AppLocalizations.of(context)!.translate(LangKeys.createAiExamSubtitle),
+                                imagePath: AppImages.logo, // Suggest unique image
+                                onTap: () {
+                                  Navigator.pushNamed(context, AppRoutes.essayAi);
+                                },
+                              ),
+                            ),
+                            CustomFadeInRight(
+                              duration: 400,
                               child: BuildOptionCard(
                                 title: AppLocalizations.of(context)!.translate(LangKeys.createManualExam),
                                 subtitle: AppLocalizations.of(context)!.translate(LangKeys.createManualExamSubtitle),
@@ -61,8 +72,8 @@ class HomeScreen extends StatelessWidget {
                                 },
                               ),
                             ),
-                            CustomFadeInDown(
-                              duration: 700,
+                            CustomFadeInUp(
+                              duration: 300,
                               child: BuildOptionCard(
                                 title: AppLocalizations.of(context)!.translate(LangKeys.examTitle),
                                 subtitle: AppLocalizations.of(context)!.translate(LangKeys.myExamsSubtitle),
@@ -72,8 +83,8 @@ class HomeScreen extends StatelessWidget {
                                 },
                               ),
                             ),
-                            CustomFadeInUp(
-                              duration: 700,
+                            CustomFadeInLeft(
+                              duration: 400,
                               child: BuildOptionCard(
                                 title: AppLocalizations.of(context)!.translate(LangKeys.analytics),
                                 subtitle: AppLocalizations.of(context)!.translate(LangKeys.exportAnalytics),

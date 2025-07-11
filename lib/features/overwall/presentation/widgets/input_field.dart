@@ -11,13 +11,14 @@ class BuildInputField extends StatelessWidget {
     this.controller,
     this.validator,
     this.keyboardType,
+    this.maxLines,
   });
 
   final String? label;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
-
+  final int? maxLines;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,6 +28,7 @@ class BuildInputField extends StatelessWidget {
         border: Border.all(color: Theme.of(context).dividerColor),
       ),
       child: TextFormField(
+        maxLines: maxLines,
         controller: controller,
         keyboardType: keyboardType,
         validator: validator,
