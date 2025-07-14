@@ -23,3 +23,10 @@ class UpdateUserFailure extends ProfileState {
   final String message;
   UpdateUserFailure(this.message);
 }
+
+class UpdateProfileImageSuccess extends ProfileState {}
+
+class UpdateProfileImageFailure extends ProfileState {
+  final String errorMessage;
+  UpdateProfileImageFailure(this.errorMessage);
+}

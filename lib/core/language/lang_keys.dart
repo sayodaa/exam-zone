@@ -142,4 +142,12 @@ class LangKeys {
   static const String questionTypeMultipleChoice = 'questionTypeMultipleChoice';
   static const String questionTypeEssay = 'questionTypeEssay';
 
+  //profile
+  static const String editProfile = 'editProfile';
+  static const String name = 'name';
+  static const String phoneNumber = 'phoneNumber';
+  static const String aboutMe = 'aboutMe';
+  static const String saveChanges = 'saveChanges';
+  static const String examCreate = 'examCreateNumber';
+  static const String joined = 'Joined';
 }

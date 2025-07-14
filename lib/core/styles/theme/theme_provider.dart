@@ -8,7 +8,7 @@ class ThemeProvider with ChangeNotifier {
   ThemeProvider() {
     _loadPreferences();
   }
-
+  
   // Theme Logic
   ThemeMode get themeMode => _themeMode;
   bool get isDarkMode => _themeMode == ThemeMode.dark;

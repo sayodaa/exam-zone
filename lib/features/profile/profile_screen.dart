@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/animations/animate_do.dart';
 import 'package:graduation/core/common/widgets/custom_app_bar.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/extensions/context_extension.dart';
+import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
@@ -32,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomAppBar(text: 'Profile'),
+                      CustomAppBar(text: context.translate(LangKeys.profile)),
                       SizedBox(height: AppColorsStyles.defaultPadding.h),
                       CustomFadeInDown(
                         duration: 700,
@@ -115,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TextApp(
-                                  text: 'About Me',
+                                  text: context.translate(LangKeys.aboutMe),
                                   style: AppTextStyles.body16(
                                     context,
                                   ).copyWith(fontWeight: FontWeight.bold),
@@ -135,7 +137,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 TextApp(
                                   text:
-                                      'Exams Created: ${userModel.examCreated ?? '0'}',
+                                      '${context.translate(LangKeys.examCreated)}: ${userModel.examCreated ?? '0'}',
                                   style: AppTextStyles.body16(context),
                                 ),
                                 SizedBox(
@@ -144,7 +146,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 TextApp(
                                   text:
-                                      'Joined: ${userModel.dateJoin ?? "January 2025"}',
+                                      '${context.translate(LangKeys.joined)}: ${userModel.dateJoin ?? "January 2025"}',
                                   style: AppTextStyles.body16(context),
                                 ),
                               ],
@@ -189,7 +191,7 @@ class ProfileScreen extends StatelessWidget {
                               );
                             },
                             child: TextApp(
-                              text: 'Edit Profile',
+                              text:context.translate(LangKeys.editProfile),
                               style: AppTextStyles.body16(
                                 context,
                               ).copyWith(fontWeight: FontWeight.bold),

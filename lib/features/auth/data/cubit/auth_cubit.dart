@@ -10,7 +10,6 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   static AuthCubit get(context) => BlocProvider.of(context);
 
-
   void login({required String email, required String password}) {
     emit(LoginLoading());
     FirebaseAuth.instance
@@ -66,8 +65,12 @@ class AuthCubit extends Cubit<AuthState> {
           'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?t=st=1731808878~exp=1731812478~hmac=afd6c0164d6c143e908928d3d3b78ab0d481e3450013804a2de6057e50529644&w=740',
 
       password: password,
+      aboutMe: 'Let others know a little more about you.',
+      phoneNumber: '+20123456789',
+      dateJoin: DateTime.now().toString().split('.').first.toString(),
+      examCreated: '0',
       isAdmin: true,
-      uId: uId,       
+      uId: uId,
     );
 
     FirebaseFirestore.instance

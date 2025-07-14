@@ -103,5 +103,14 @@
   "searchExams": "Search Exams",
   "filterBySubject": "Filter by Subject",
   "filterByDifficulty": "Filter by Difficulty",
-  "clearFilters": "Clear Filters"
+  "clearFilters": "Clear Filters",
+   "aboutMe": "About Me",
+  "saveChanges": "Save Changes",
+  "name": "Name",
+  
+ 
+  "phoneNumber": "Phone Number",
+  "editProfile": "Edit Profile",
+  "examCreateNumber":"Exam Create",
+  "Joined":"Joined"
 }

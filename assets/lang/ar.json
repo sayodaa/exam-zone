@@ -108,5 +108,15 @@
   "searchExams": "البحث في الاختبارات",
   "filterBySubject": "تصفية حسب المادة",
   "filterByDifficulty": "تصفية حسب مستوى الصعوبة",
-  "clearFilters": "مسح الفلاتر"
+  "clearFilters": "مسح الفلاتر",
+  "aboutMe": "نبذة عنى",
+  "saveChanges": "حفظ التغييرات",
+  "name": "الاسم",
+ 
+  "phoneNumber": "رقم الهاتف",
+  
+  "editProfile": "تعديل الملف الشخصي",
+  "examCreateNumber":"اختبارات منشئة",
+  "Joined":"تاريخ الانضمام"
+  
 }

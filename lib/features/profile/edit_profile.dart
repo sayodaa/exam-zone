@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/common/animations/animate_do.dart';
+import 'package:graduation/core/common/toast/show_toast.dart';
+import 'package:graduation/core/common/widgets/app_text_field.dart';
 import 'package:graduation/core/common/widgets/custom_app_bar.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/extensions/context_extension.dart';
+import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/profile/cubit/profile_cubit.dart';
-import 'package:graduation/core/common/widgets/app_text_field.dart'; // تأكد من مسار AppTextField
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -24,30 +27,26 @@ class EditProfileScreen extends StatelessWidget {
       child: BlocConsumer<ProfileCubit, ProfileState>(
         listener: (context, state) {
           if (state is UpdateUserSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('تم تحديث الملف الشخصي بنجاح'),
-                backgroundColor: Colors.green,
-              ),
+            ShowToast.showToastSuccessTop(
+              message: 'تم تحديث الملف الشخصي بنجاح',
             );
             Navigator.pop(context);
           } else if (state is UpdateUserFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('فشل في تحديث الملف: ${state.message}'),
-                backgroundColor: Colors.red,
-              ),
+            ShowToast.showToastErrorTop(
+              message: 'فشل في تحديث الملف الشخصي: ${state.message}',
+            );
+          } else if (state is UpdateProfileImageFailure) {
+            ShowToast.showToastErrorTop(
+              message: 'فشل في تحميل الصورة: ${state.errorMessage}',
             );
           }
         },
         builder: (context, state) {
           var cubit = ProfileCubit.get(context);
           var userModel = cubit.userModel;
-
-          phoneNumberController.text = userModel.phoneNumber ?? '';
-          aboutMeController.text = userModel.aboutMe ?? '';
-
-          usernameController.text = userModel.username ?? '';
+          phoneNumberController.text = userModel.phoneNumber!;
+          aboutMeController.text = userModel.aboutMe!;
+          usernameController.text = userModel.username!;
 
           return Scaffold(
             body: SafeArea(
@@ -60,7 +59,7 @@ class EditProfileScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomAppBar(text: 'تعديل الملف الشخصي'),
+                       CustomAppBar(text: context.translate(LangKeys.editProfile)),
                       SizedBox(height: AppColorsStyles.defaultPadding.h),
 
                       // صورة الملف الشخصي
@@ -129,7 +128,7 @@ class EditProfileScreen extends StatelessWidget {
                         CustomFadeInUp(
                           duration: 700,
                           child: AppTextField(
-                            labelText: 'الاسم',
+                            labelText: context.translate(LangKeys.name),
                             controller: usernameController,
                           ),
                         ),
@@ -138,7 +137,7 @@ class EditProfileScreen extends StatelessWidget {
                         CustomFadeInUp(
                           duration: 800,
                           child: AppTextField(
-                            labelText: 'رقم الهاتف',
+                            labelText: context.translate(LangKeys.phoneNumber),
                             controller: phoneNumberController,
                             keyboardType: TextInputType.phone,
                           ),
@@ -148,7 +147,7 @@ class EditProfileScreen extends StatelessWidget {
                         CustomFadeInUp(
                           duration: 900,
                           child: AppTextField(
-                            labelText: 'نبذة عني',
+                            labelText: context.translate(LangKeys.aboutMe),
                             controller: aboutMeController,
                             maxLines: 3,
                           ),
@@ -193,15 +192,19 @@ class EditProfileScreen extends StatelessWidget {
                                 onPressed: state is GetUserLoading
                                     ? null
                                     : () {
-                                        _saveProfile(
-                                          context: context,
-                                          cubit: cubit,
-                                          usernameController:
-                                              usernameController,
-                                          phoneNumberController:
-                                              phoneNumberController,
-                                          aboutMeController: aboutMeController,
-                                        );
+                                        if (cubit.profileImage != null) {
+                                          cubit.uploadProfileImageFirebase(
+                                            name: usernameController.text.trim(),
+                                            phone: phoneNumberController.text.trim(),
+                                            bio: aboutMeController.text.trim(),
+                                          );
+                                        } else {
+                                          cubit.updateUserData(
+                                            name: usernameController.text.trim(),
+                                            phoneNumber: phoneNumberController.text.trim(),
+                                            aboutMe: aboutMeController.text.trim(),
+                                          );
+                                        }
                                       },
                                 child: state is GetUserLoading
                                     ? SizedBox(
@@ -220,7 +223,7 @@ class EditProfileScreen extends StatelessWidget {
                                         ),
                                       )
                                     : TextApp(
-                                        text: 'حفظ التعديلات',
+                                        text: context.translate(LangKeys.saveChanges),
                                         style: AppTextStyles.body16(
                                           context,
                                         ).copyWith(fontWeight: FontWeight.bold),
@@ -240,19 +243,6 @@ class EditProfileScreen extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-
-  void _saveProfile({
-    required BuildContext context,
-    required ProfileCubit cubit,
-    required TextEditingController usernameController,
-    required TextEditingController phoneNumberController,
-    required TextEditingController aboutMeController,
-  }) {
-    cubit.updateUserData(
-      name: usernameController.text.trim(),
-      image: cubit.profileImage?.path,
     );
   }
 }

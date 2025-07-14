@@ -42,11 +42,10 @@ class ExamZoneApp extends StatelessWidget {
         AppString.uId = SharedPref().getString(PrefKeys.uId);
         return GestureDetector(
           onTap: () {
-            // إلغاء تركيز لوحة المفاتيح عند النقر خارج الحقول
             FocusManager.instance.primaryFocus?.unfocus();
           },
           child: MaterialApp(
-            locale: themeProvider.currentLocale, // ✅ اللغة حسب ThemeProvider
+            locale: themeProvider.currentLocale,
             localizationsDelegates:
                 AppLocalizationsSetup.localizationsDelegates,
             supportedLocales: AppLocalizationsSetup.supportedLocales,

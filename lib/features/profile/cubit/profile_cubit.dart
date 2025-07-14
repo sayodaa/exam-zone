@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/core/utils/app_string.dart';
 import 'package:graduation/features/auth/data/model/user_model.dart';
@@ -10,6 +11,7 @@ part 'profile_state.dart';
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
   static ProfileCubit get(context) => BlocProvider.of(context);
+
   UserModel userModel = UserModel(
     username: '',
     personImg: '',
@@ -61,13 +63,44 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<void> updateUserData({String? name, String? image}) async {
+  void uploadProfileImageFirebase({
+    required String name,
+    required String phone,
+    required String bio,
+  }) {
+    FirebaseStorage.instance
+        .ref()
+        .child(Uri.file(profileImage!.path).pathSegments.last)
+        .putFile(profileImage!)
+        .then((value) {
+          value.ref
+              .getDownloadURL()
+              .then((value) {
+                emit(UpdateProfileImageSuccess());
+                log('${value}uploadProfileImageFirebase value');
+                updateUserData(name: name, image: value);
+              })
+              .catchError((error) {
+                emit(UpdateProfileImageFailure(error));
+              });
+        })
+        .catchError((error) {
+          emit(UpdateProfileImageFailure(error));
+        });
+  }
+
+  Future<void> updateUserData({
+    String? name,
+    String? image,
+    String? phoneNumber,
+    String? aboutMe,
+  }) async {
     UserModel model = UserModel(
       username: name ?? userModel.username,
       personImg: image ?? userModel.personImg,
 
-      phoneNumber: userModel.phoneNumber,
-      aboutMe: userModel.aboutMe,
+      phoneNumber: phoneNumber ?? userModel.phoneNumber,
+      aboutMe: aboutMe ?? userModel.aboutMe,
       examCreated: userModel.examCreated,
       dateJoin: userModel.dateJoin,
       email: userModel.email,
